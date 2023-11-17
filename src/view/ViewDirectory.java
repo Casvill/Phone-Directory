@@ -1,17 +1,17 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
 
 /**
  *
- * @author Daniel Casvill
+ * @author andre
  */
-public class ViewDirectory extends javax.swing.JPanel {
+public class ViewDirectory extends javax.swing.JFrame {
 
     /**
-     * Creates new form ViewDirectory
+     * Creates new form ViewDirectory2
      */
     public ViewDirectory() {
         initComponents();
@@ -26,244 +26,199 @@ public class ViewDirectory extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jlHeader = new javax.swing.JLabel();
-        jlErrorPanel = new javax.swing.JLabel();
-        jlType = new javax.swing.JLabel();
-        jlNames = new javax.swing.JLabel();
-        jlLastName = new javax.swing.JLabel();
-        jlId = new javax.swing.JLabel();
-        jlBirthDate = new javax.swing.JLabel();
-        jlAdress = new javax.swing.JLabel();
-        jlTelNumber = new javax.swing.JLabel();
-        jcbSelectType = new javax.swing.JComboBox<>();
-        jbAdd = new javax.swing.JButton();
-        jbUpdate = new javax.swing.JButton();
-        jbDelete = new javax.swing.JButton();
-        jbList = new javax.swing.JButton();
-        jtfName = new javax.swing.JTextField();
-        jtfLastName = new javax.swing.JTextField();
-        jtfId = new javax.swing.JTextField();
-        jtfBirthDate = new javax.swing.JTextField();
-        jtfAdress = new javax.swing.JTextField();
-        jtfTelNumber = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        jlType7 = new javax.swing.JLabel();
-        jcbTelType = new javax.swing.JComboBox<>();
-        jbAddAddress = new javax.swing.JButton();
-        jbAddTelNumber = new javax.swing.JButton();
+        jlHeader1 = new javax.swing.JLabel();
+        jlErrorPanel1 = new javax.swing.JLabel();
+        jlType1 = new javax.swing.JLabel();
+        jlNames1 = new javax.swing.JLabel();
+        jlLastName1 = new javax.swing.JLabel();
+        jlId1 = new javax.swing.JLabel();
+        jlBirthDate1 = new javax.swing.JLabel();
+        jlAdress1 = new javax.swing.JLabel();
+        jlTelNumber1 = new javax.swing.JLabel();
+        jcbSelectType1 = new javax.swing.JComboBox<>();
+        jbAdd1 = new javax.swing.JButton();
+        jbUpdate1 = new javax.swing.JButton();
+        jbDelete1 = new javax.swing.JButton();
+        jbList1 = new javax.swing.JButton();
+        jtfName1 = new javax.swing.JTextField();
+        jtfLastName1 = new javax.swing.JTextField();
+        jtfId1 = new javax.swing.JTextField();
+        jtfBirthDate1 = new javax.swing.JTextField();
+        jtfAdress1 = new javax.swing.JTextField();
+        jtfTelNumber1 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jlType8 = new javax.swing.JLabel();
+        jcbTelType1 = new javax.swing.JComboBox<>();
+        jbAddAddress1 = new javax.swing.JButton();
+        jbAddTelNumber1 = new javax.swing.JButton();
 
-        jlHeader.setFont(new java.awt.Font("Courier New", 1, 48)); // NOI18N
-        jlHeader.setText("DIRECTORIO ");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        jlErrorPanel.setText("error panel ");
+        jlHeader1.setFont(new java.awt.Font("Courier New", 1, 48)); // NOI18N
+        jlHeader1.setText("DIRECTORIO ");
+        getContentPane().add(jlHeader1);
+        jlHeader1.setBounds(342, 6, 319, 88);
 
-        jlType.setText("TIPO:");
+        jlErrorPanel1.setText("error panel ");
+        getContentPane().add(jlErrorPanel1);
+        jlErrorPanel1.setBounds(378, 98, 581, 16);
 
-        jlNames.setText("NOMBRES:");
+        jlType1.setText("TIPO:");
+        getContentPane().add(jlType1);
+        jlType1.setBounds(378, 135, 28, 16);
 
-        jlLastName.setText("APELLIDOS:");
+        jlNames1.setText("NOMBRES:");
+        getContentPane().add(jlNames1);
+        jlNames1.setBounds(378, 163, 58, 16);
 
-        jlId.setText("ID:");
+        jlLastName1.setText("APELLIDOS:");
+        getContentPane().add(jlLastName1);
+        jlLastName1.setBounds(378, 191, 62, 16);
 
-        jlBirthDate.setText("FECHA DE NACIMIENTO:");
+        jlId1.setText("ID:");
+        getContentPane().add(jlId1);
+        jlId1.setBounds(378, 219, 14, 16);
 
-        jlAdress.setText("DIRECCION(ES):");
+        jlBirthDate1.setText("FECHA DE NACIMIENTO:");
+        getContentPane().add(jlBirthDate1);
+        jlBirthDate1.setBounds(378, 247, 132, 16);
 
-        jlTelNumber.setText("TELEFONO(S):");
+        jlAdress1.setText("DIRECCION(ES):");
+        getContentPane().add(jlAdress1);
+        jlAdress1.setBounds(378, 278, 84, 16);
 
-        jcbSelectType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Profesor", "Estudiante ", "Empleado" }));
+        jlTelNumber1.setText("TELEFONO(S):");
+        getContentPane().add(jlTelNumber1);
+        jlTelNumber1.setBounds(378, 306, 74, 16);
 
-        jbAdd.setText("AGREGAR");
+        jcbSelectType1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Profesor", "Estudiante ", "Empleado" }));
+        getContentPane().add(jcbSelectType1);
+        jcbSelectType1.setBounds(532, 132, 92, 22);
 
-        jbUpdate.setText("ACTUALIZAR");
+        jbAdd1.setText("AGREGAR");
+        getContentPane().add(jbAdd1);
+        jbAdd1.setBounds(609, 612, 82, 23);
 
-        jbDelete.setText("BORRAR");
+        jbUpdate1.setText("ACTUALIZAR");
+        getContentPane().add(jbUpdate1);
+        jbUpdate1.setBounds(492, 612, 99, 23);
 
-        jbList.setText("LISTAR");
+        jbDelete1.setText("BORRAR");
+        getContentPane().add(jbDelete1);
+        jbDelete1.setBounds(390, 612, 75, 23);
 
-        jtfLastName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfLastNameActionPerformed(evt);
-            }
-        });
+        jbList1.setText("LISTAR");
+        getContentPane().add(jbList1);
+        jbList1.setBounds(300, 612, 72, 23);
+        getContentPane().add(jtfName1);
+        jtfName1.setBounds(532, 160, 340, 22);
+        getContentPane().add(jtfLastName1);
+        jtfLastName1.setBounds(532, 188, 340, 22);
+        getContentPane().add(jtfId1);
+        jtfId1.setBounds(532, 216, 167, 22);
+        getContentPane().add(jtfBirthDate1);
+        jtfBirthDate1.setBounds(532, 244, 167, 22);
+        getContentPane().add(jtfAdress1);
+        jtfAdress1.setBounds(532, 275, 167, 22);
+        getContentPane().add(jtfTelNumber1);
+        jtfTelNumber1.setBounds(532, 303, 167, 22);
 
-        jtfBirthDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfBirthDateActionPerformed(evt);
-            }
-        });
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(378, 349, 581, 245);
 
-        jLabel1.setText("(MM/DD/AAAA)");
+        jLabel2.setText("(MM/DD/AAAA)");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(745, 247, 88, 16);
 
-        jlType7.setText("TIPO:");
+        jlType8.setText("TIPO:");
+        getContentPane().add(jlType8);
+        jlType8.setBounds(711, 306, 28, 16);
 
-        jcbTelType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MOVIL", "CASA", "OFICINA", "OTRO" }));
+        jcbTelType1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MOVIL", "CASA", "OFICINA", "OTRO" }));
+        getContentPane().add(jcbTelType1);
+        jcbTelType1.setBounds(745, 303, 127, 22);
 
-        jbAddAddress.setText("AGREGAR");
+        jbAddAddress1.setText("AGREGAR");
+        getContentPane().add(jbAddAddress1);
+        jbAddAddress1.setBounds(450, 275, 82, 23);
 
-        jbAddTelNumber.setText("AGREGAR");
+        jbAddTelNumber1.setText("AGREGAR");
+        getContentPane().add(jbAddTelNumber1);
+        jbAddTelNumber1.setBounds(450, 275, 82, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jlHeader)
-                        .addGap(330, 330, 330))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlLastName)
-                                    .addComponent(jlNames)
-                                    .addComponent(jlType))
-                                .addGap(92, 92, 92)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jcbSelectType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jtfLastName)
-                                        .addComponent(jtfName, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jScrollPane1)
-                            .addComponent(jlErrorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlTelNumber)
-                                    .addComponent(jlAdress)
-                                    .addComponent(jlBirthDate)
-                                    .addComponent(jlId))
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jtfId, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jtfBirthDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jtfTelNumber, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jtfAdress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jlType7)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(163, 163, 163)
-                                                .addComponent(jbAddAddress))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jcbTelType, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jbAddTelNumber)))))
-                                .addGap(286, 286, 286)))
-                        .addGap(32, 32, 32))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbList)
-                .addGap(18, 18, 18)
-                .addComponent(jbDelete)
-                .addGap(27, 27, 27)
-                .addComponent(jbUpdate)
-                .addGap(18, 18, 18)
-                .addComponent(jbAdd)
-                .addGap(300, 300, 300))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(jlErrorPanel)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlType)
-                    .addComponent(jcbSelectType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlNames)
-                    .addComponent(jtfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlLastName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlId))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfBirthDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlBirthDate)
-                    .addComponent(jLabel1))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlAdress)
-                    .addComponent(jbAddAddress))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfTelNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlTelNumber)
-                    .addComponent(jlType7)
-                    .addComponent(jcbTelType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbAddTelNumber))
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbUpdate)
-                    .addComponent(jbAdd)
-                    .addComponent(jbDelete)
-                    .addComponent(jbList))
-                .addGap(22, 22, 22))
-        );
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfLastNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfLastNameActionPerformed
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ViewDirectory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ViewDirectory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ViewDirectory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ViewDirectory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
 
-    private void jtfBirthDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfBirthDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfBirthDateActionPerformed
-
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ViewDirectory().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JButton jbAdd;
-    private javax.swing.JButton jbAddAddress;
-    private javax.swing.JButton jbAddTelNumber;
-    private javax.swing.JButton jbDelete;
-    private javax.swing.JButton jbList;
-    private javax.swing.JButton jbUpdate;
-    private javax.swing.JComboBox<String> jcbSelectType;
-    private javax.swing.JComboBox<String> jcbTelType;
-    private javax.swing.JLabel jlAdress;
-    private javax.swing.JLabel jlBirthDate;
-    private javax.swing.JLabel jlErrorPanel;
-    private javax.swing.JLabel jlHeader;
-    private javax.swing.JLabel jlId;
-    private javax.swing.JLabel jlLastName;
-    private javax.swing.JLabel jlNames;
-    private javax.swing.JLabel jlTelNumber;
-    private javax.swing.JLabel jlType;
-    private javax.swing.JLabel jlType7;
-    private javax.swing.JTextField jtfAdress;
-    private javax.swing.JTextField jtfBirthDate;
-    private javax.swing.JTextField jtfId;
-    private javax.swing.JTextField jtfLastName;
-    private javax.swing.JTextField jtfName;
-    private javax.swing.JTextField jtfTelNumber;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JButton jbAdd1;
+    private javax.swing.JButton jbAddAddress1;
+    private javax.swing.JButton jbAddTelNumber1;
+    private javax.swing.JButton jbDelete1;
+    private javax.swing.JButton jbList1;
+    private javax.swing.JButton jbUpdate1;
+    private javax.swing.JComboBox<String> jcbSelectType1;
+    private javax.swing.JComboBox<String> jcbTelType1;
+    private javax.swing.JLabel jlAdress1;
+    private javax.swing.JLabel jlBirthDate1;
+    private javax.swing.JLabel jlErrorPanel1;
+    private javax.swing.JLabel jlHeader1;
+    private javax.swing.JLabel jlId1;
+    private javax.swing.JLabel jlLastName1;
+    private javax.swing.JLabel jlNames1;
+    private javax.swing.JLabel jlTelNumber1;
+    private javax.swing.JLabel jlType1;
+    private javax.swing.JLabel jlType8;
+    private javax.swing.JTextField jtfAdress1;
+    private javax.swing.JTextField jtfBirthDate1;
+    private javax.swing.JTextField jtfId1;
+    private javax.swing.JTextField jtfLastName1;
+    private javax.swing.JTextField jtfName1;
+    private javax.swing.JTextField jtfTelNumber1;
     // End of variables declaration//GEN-END:variables
 }
