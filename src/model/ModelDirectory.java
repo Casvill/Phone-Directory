@@ -1,17 +1,20 @@
 package model;
 
+import dao.ContactDaoImplementation;
 import dao.IContactDao;
 import java.util.List;
 
 /**
  *
- * @author Daniel Casvill
+ * @author Daniel Castillo
  */
 public class ModelDirectory 
 {
     private IContactDao contactDao;
 
-    public ModelDirectory() {
+    public ModelDirectory() 
+    {
+        this.contactDao = new ContactDaoImplementation();
     }
     
     public boolean addContact(ModelContact contact)
@@ -22,5 +25,20 @@ public class ModelDirectory
     public List<ModelContact> getAllContacts()
     {
         return this.contactDao.getAllContacts();
+    }
+    
+    public ModelContact getContact(String contactId)
+    {
+        return this.contactDao.getContact(contactId);
+    }
+    
+    public boolean updateContact(ModelContact contact)
+    {
+        return this.contactDao.updateContact(contact);
+    }
+    
+    public boolean deleteContact(ModelContact contact)
+    {
+        return this.contactDao.deleteContact(contact);
     }
 }
