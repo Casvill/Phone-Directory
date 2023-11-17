@@ -46,12 +46,13 @@ public class ViewDirectory extends javax.swing.JPanel {
         jtfBirthDate = new javax.swing.JTextField();
         jtfAdress = new javax.swing.JTextField();
         jtfTelNumber = new javax.swing.JTextField();
-        jbInstructions = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jlType7 = new javax.swing.JLabel();
         jcbTelType = new javax.swing.JComboBox<>();
+        jbAddAddress = new javax.swing.JButton();
+        jbAddTelNumber = new javax.swing.JButton();
 
         jlHeader.setFont(new java.awt.Font("Courier New", 1, 48)); // NOI18N
         jlHeader.setText("DIRECTORIO ");
@@ -94,8 +95,6 @@ public class ViewDirectory extends javax.swing.JPanel {
             }
         });
 
-        jbInstructions.setText("INSTRUCCIONES");
-
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -106,12 +105,16 @@ public class ViewDirectory extends javax.swing.JPanel {
 
         jcbTelType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MOVIL", "CASA", "OFICINA", "OTRO" }));
 
+        jbAddAddress.setText("AGREGAR");
+
+        jbAddTelNumber.setText("AGREGAR");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 31, Short.MAX_VALUE)
+                .addGap(0, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jlHeader)
@@ -141,33 +144,36 @@ public class ViewDirectory extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jtfId, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtfBirthDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(jtfTelNumber, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jtfAdress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jlType7))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jtfId, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jtfBirthDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jcbTelType, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(434, 434, 434)))
+                                        .addComponent(jlType7)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(163, 163, 163)
+                                                .addComponent(jbAddAddress))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jcbTelType, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jbAddTelNumber)))))
+                                .addGap(286, 286, 286)))
                         .addGap(32, 32, 32))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbList)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbDelete)
-                        .addGap(27, 27, 27)
-                        .addComponent(jbUpdate)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbAdd))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(jbInstructions)))
+                .addComponent(jbList)
+                .addGap(18, 18, 18)
+                .addComponent(jbDelete)
+                .addGap(27, 27, 27)
+                .addComponent(jbUpdate)
+                .addGap(18, 18, 18)
+                .addComponent(jbAdd)
                 .addGap(300, 300, 300))
         );
         layout.setVerticalGroup(
@@ -201,24 +207,24 @@ public class ViewDirectory extends javax.swing.JPanel {
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlAdress))
+                    .addComponent(jlAdress)
+                    .addComponent(jbAddAddress))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfTelNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlTelNumber)
                     .addComponent(jlType7)
-                    .addComponent(jcbTelType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                    .addComponent(jcbTelType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbAddTelNumber))
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbUpdate)
                     .addComponent(jbAdd)
                     .addComponent(jbDelete)
                     .addComponent(jbList))
-                .addGap(18, 18, 18)
-                .addComponent(jbInstructions)
-                .addContainerGap())
+                .addGap(22, 22, 22))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -236,8 +242,9 @@ public class ViewDirectory extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton jbAdd;
+    private javax.swing.JButton jbAddAddress;
+    private javax.swing.JButton jbAddTelNumber;
     private javax.swing.JButton jbDelete;
-    private javax.swing.JButton jbInstructions;
     private javax.swing.JButton jbList;
     private javax.swing.JButton jbUpdate;
     private javax.swing.JComboBox<String> jcbSelectType;
