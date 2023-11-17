@@ -16,7 +16,6 @@ public class ControllerDirectory
     {
         this.directory = directory;
         this.viewDirectory = viewDirectory;
-    }
-    
-    
+        this.viewDirectory.setVisible(true);
+    }        
 }
