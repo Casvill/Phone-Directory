@@ -1,6 +1,7 @@
 package controller;
 
 import model.ModelDirectory;
+import view.ViewDirectory;
 
 /**
  *
@@ -9,13 +10,13 @@ import model.ModelDirectory;
 public class ControllerDirectory 
 {
     private ModelDirectory directory;
+    private ViewDirectory viewDirectory;
 
-    public ControllerDirectory() 
+    public ControllerDirectory(ModelDirectory directory, ViewDirectory viewDirectory) 
     {
-        this.directory = new ModelDirectory();
+        this.directory = directory;
+        this.viewDirectory = viewDirectory;
     }
-    
-    
     
     
 }
