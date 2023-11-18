@@ -4,6 +4,8 @@
  */
 package view;
 
+import java.awt.event.MouseListener;
+
 /**
  *
  * @author andre
@@ -15,8 +17,32 @@ public class ViewDirectory extends javax.swing.JFrame {
      */
     public ViewDirectory() {
         initComponents();
+        setSize(850, 800);
     }
-
+    
+    public void addBtnjbAddAddressListener(MouseListener listenControllers){
+        jbAddAddress.addMouseListener(listenControllers);}
+        
+    public void addBtnjbAddTelNumberListener(MouseListener listenControllers){
+        jbAddTelNumber.addMouseListener(listenControllers);} 
+     
+    public void addBtnjbAddListener(MouseListener listenControllers){
+        jbAdd.addMouseListener(listenControllers); }
+        
+    public void addBtnjbDeleteListener(MouseListener listenControllers){
+        jbDelete.addMouseListener(listenControllers);}
+        
+    public void addBtnjbListListener(MouseListener listenControllers){
+        jbList.addMouseListener(listenControllers);}
+                
+    public void addBtnjbUpdateListener(MouseListener listenControllers){
+        jbUpdate.addMouseListener(listenControllers);}
+    
+    public void addBtnjbSearchIdListener(MouseListener listenControllers){
+        jbSearchId.addMouseListener(listenControllers);}
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,10 +62,10 @@ public class ViewDirectory extends javax.swing.JFrame {
         jlAdress1 = new javax.swing.JLabel();
         jlTelNumber1 = new javax.swing.JLabel();
         jcbSelectType1 = new javax.swing.JComboBox<>();
-        jbAdd1 = new javax.swing.JButton();
-        jbUpdate1 = new javax.swing.JButton();
-        jbDelete1 = new javax.swing.JButton();
-        jbList1 = new javax.swing.JButton();
+        jbAdd = new javax.swing.JButton();
+        jbUpdate = new javax.swing.JButton();
+        jbDelete = new javax.swing.JButton();
+        jbList = new javax.swing.JButton();
         jtfName1 = new javax.swing.JTextField();
         jtfLastName1 = new javax.swing.JTextField();
         jtfId1 = new javax.swing.JTextField();
@@ -51,157 +77,155 @@ public class ViewDirectory extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jlType8 = new javax.swing.JLabel();
         jcbTelType1 = new javax.swing.JComboBox<>();
-        jbAddAddress1 = new javax.swing.JButton();
-        jbAddTelNumber1 = new javax.swing.JButton();
+        jbAddAddress = new javax.swing.JButton();
+        jbAddTelNumber = new javax.swing.JButton();
+        jbSearchId = new javax.swing.JButton();
+        jtfTelNumber2 = new javax.swing.JTextField();
+        jlId2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(700, 700));
         getContentPane().setLayout(null);
 
         jlHeader1.setFont(new java.awt.Font("Courier New", 1, 48)); // NOI18N
         jlHeader1.setText("DIRECTORIO ");
         getContentPane().add(jlHeader1);
-        jlHeader1.setBounds(342, 6, 319, 88);
+        jlHeader1.setBounds(280, 10, 319, 88);
 
         jlErrorPanel1.setText("error panel ");
         getContentPane().add(jlErrorPanel1);
-        jlErrorPanel1.setBounds(378, 98, 581, 16);
+        jlErrorPanel1.setBounds(10, 110, 581, 16);
 
         jlType1.setText("TIPO:");
         getContentPane().add(jlType1);
-        jlType1.setBounds(378, 135, 28, 16);
+        jlType1.setBounds(40, 140, 40, 16);
 
         jlNames1.setText("NOMBRES:");
         getContentPane().add(jlNames1);
-        jlNames1.setBounds(378, 163, 58, 16);
+        jlNames1.setBounds(40, 170, 110, 16);
 
         jlLastName1.setText("APELLIDOS:");
         getContentPane().add(jlLastName1);
-        jlLastName1.setBounds(378, 191, 62, 16);
+        jlLastName1.setBounds(40, 200, 120, 16);
 
-        jlId1.setText("ID:");
+        jlId1.setText("ID QUE DESEA BUSCAR:");
         getContentPane().add(jlId1);
-        jlId1.setBounds(378, 219, 14, 16);
+        jlId1.setBounds(610, 620, 140, 16);
 
         jlBirthDate1.setText("FECHA DE NACIMIENTO:");
         getContentPane().add(jlBirthDate1);
-        jlBirthDate1.setBounds(378, 247, 132, 16);
+        jlBirthDate1.setBounds(40, 260, 132, 16);
 
         jlAdress1.setText("DIRECCION(ES):");
         getContentPane().add(jlAdress1);
-        jlAdress1.setBounds(378, 278, 84, 16);
+        jlAdress1.setBounds(40, 290, 110, 16);
 
         jlTelNumber1.setText("TELEFONO(S):");
         getContentPane().add(jlTelNumber1);
-        jlTelNumber1.setBounds(378, 306, 74, 16);
+        jlTelNumber1.setBounds(40, 320, 100, 16);
 
-        jcbSelectType1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Profesor", "Estudiante ", "Empleado" }));
+        jcbSelectType1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PROFESOR", "ESTUDIANTE ", "EMPLEADO" }));
         getContentPane().add(jcbSelectType1);
-        jcbSelectType1.setBounds(532, 132, 92, 22);
+        jcbSelectType1.setBounds(280, 140, 103, 22);
 
-        jbAdd1.setText("AGREGAR");
-        getContentPane().add(jbAdd1);
-        jbAdd1.setBounds(609, 612, 82, 23);
+        jbAdd.setText("AGREGAR");
+        getContentPane().add(jbAdd);
+        jbAdd.setBounds(420, 670, 120, 23);
 
-        jbUpdate1.setText("ACTUALIZAR");
-        getContentPane().add(jbUpdate1);
-        jbUpdate1.setBounds(492, 612, 99, 23);
+        jbUpdate.setText("ACTUALIZAR");
+        getContentPane().add(jbUpdate);
+        jbUpdate.setBounds(290, 670, 120, 23);
 
-        jbDelete1.setText("BORRAR");
-        getContentPane().add(jbDelete1);
-        jbDelete1.setBounds(390, 612, 75, 23);
+        jbDelete.setText("BORRAR");
+        getContentPane().add(jbDelete);
+        jbDelete.setBounds(30, 670, 120, 23);
 
-        jbList1.setText("LISTAR");
-        getContentPane().add(jbList1);
-        jbList1.setBounds(300, 612, 72, 23);
+        jbList.setText("LISTAR");
+        getContentPane().add(jbList);
+        jbList.setBounds(160, 670, 120, 23);
         getContentPane().add(jtfName1);
-        jtfName1.setBounds(532, 160, 340, 22);
+        jtfName1.setBounds(280, 170, 340, 22);
         getContentPane().add(jtfLastName1);
-        jtfLastName1.setBounds(532, 188, 340, 22);
+        jtfLastName1.setBounds(280, 200, 340, 22);
         getContentPane().add(jtfId1);
-        jtfId1.setBounds(532, 216, 167, 22);
+        jtfId1.setBounds(280, 230, 167, 22);
+
+        jtfBirthDate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfBirthDate1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jtfBirthDate1);
-        jtfBirthDate1.setBounds(532, 244, 167, 22);
+        jtfBirthDate1.setBounds(280, 260, 167, 22);
         getContentPane().add(jtfAdress1);
-        jtfAdress1.setBounds(532, 275, 167, 22);
+        jtfAdress1.setBounds(280, 290, 167, 22);
         getContentPane().add(jtfTelNumber1);
-        jtfTelNumber1.setBounds(532, 303, 167, 22);
+        jtfTelNumber1.setBounds(590, 640, 167, 22);
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(378, 349, 581, 245);
+        jScrollPane2.setBounds(20, 360, 760, 245);
 
         jLabel2.setText("(MM/DD/AAAA)");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(745, 247, 88, 16);
+        jLabel2.setBounds(510, 260, 88, 16);
 
         jlType8.setText("TIPO:");
         getContentPane().add(jlType8);
-        jlType8.setBounds(711, 306, 28, 16);
+        jlType8.setBounds(460, 320, 40, 16);
 
         jcbTelType1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MOVIL", "CASA", "OFICINA", "OTRO" }));
         getContentPane().add(jcbTelType1);
-        jcbTelType1.setBounds(745, 303, 127, 22);
+        jcbTelType1.setBounds(510, 320, 90, 22);
 
-        jbAddAddress1.setText("AGREGAR");
-        getContentPane().add(jbAddAddress1);
-        jbAddAddress1.setBounds(450, 275, 82, 23);
+        jbAddAddress.setText("AGREGAR");
+        getContentPane().add(jbAddAddress);
+        jbAddAddress.setBounds(630, 290, 100, 23);
 
-        jbAddTelNumber1.setText("AGREGAR");
-        getContentPane().add(jbAddTelNumber1);
-        jbAddTelNumber1.setBounds(450, 275, 82, 23);
+        jbAddTelNumber.setText("AGREGAR");
+        getContentPane().add(jbAddTelNumber);
+        jbAddTelNumber.setBounds(630, 320, 100, 23);
+
+        jbSearchId.setText("BUSCAR POR ID");
+        jbSearchId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSearchIdActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbSearchId);
+        jbSearchId.setBounds(570, 670, 200, 23);
+        getContentPane().add(jtfTelNumber2);
+        jtfTelNumber2.setBounds(280, 320, 167, 22);
+
+        jlId2.setText("ID:");
+        getContentPane().add(jlId2);
+        jlId2.setBounds(40, 230, 14, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewDirectory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewDirectory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewDirectory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewDirectory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void jbSearchIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbSearchIdActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewDirectory().setVisible(true);
-            }
-        });
-    }
+    private void jtfBirthDate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfBirthDate1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfBirthDate1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JButton jbAdd1;
-    private javax.swing.JButton jbAddAddress1;
-    private javax.swing.JButton jbAddTelNumber1;
-    private javax.swing.JButton jbDelete1;
-    private javax.swing.JButton jbList1;
-    private javax.swing.JButton jbUpdate1;
+    private javax.swing.JButton jbAdd;
+    private javax.swing.JButton jbAddAddress;
+    private javax.swing.JButton jbAddTelNumber;
+    private javax.swing.JButton jbDelete;
+    private javax.swing.JButton jbList;
+    private javax.swing.JButton jbSearchId;
+    private javax.swing.JButton jbUpdate;
     private javax.swing.JComboBox<String> jcbSelectType1;
     private javax.swing.JComboBox<String> jcbTelType1;
     private javax.swing.JLabel jlAdress1;
@@ -209,6 +233,7 @@ public class ViewDirectory extends javax.swing.JFrame {
     private javax.swing.JLabel jlErrorPanel1;
     private javax.swing.JLabel jlHeader1;
     private javax.swing.JLabel jlId1;
+    private javax.swing.JLabel jlId2;
     private javax.swing.JLabel jlLastName1;
     private javax.swing.JLabel jlNames1;
     private javax.swing.JLabel jlTelNumber1;
@@ -220,5 +245,6 @@ public class ViewDirectory extends javax.swing.JFrame {
     private javax.swing.JTextField jtfLastName1;
     private javax.swing.JTextField jtfName1;
     private javax.swing.JTextField jtfTelNumber1;
+    private javax.swing.JTextField jtfTelNumber2;
     // End of variables declaration//GEN-END:variables
 }
