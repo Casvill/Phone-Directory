@@ -4,7 +4,7 @@
  */
 package view;
 
-import java.awt.event.MouseListener;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -17,68 +17,91 @@ public class ViewDirectory extends javax.swing.JFrame {
      */
     public ViewDirectory() {
         initComponents();
+        jcbSelectType.setSelectedIndex(-1);
+        jcbTelType.setSelectedIndex(-1);
         setSize(850, 800);
     }
     
-    public void addBtnjbAddAddressListener(MouseListener listenControllers){
-        jbAddAddress.addMouseListener(listenControllers);}
+    public void addBtnjbAddAddressListener(ActionListener listenControllers){
+        jbAddAddress.addActionListener(listenControllers);}
         
-    public void addBtnjbAddTelNumberListener(MouseListener listenControllers){
-        jbAddTelNumber.addMouseListener(listenControllers);} 
+    public void addBtnjbAddTelNumberListener(ActionListener listenControllers){
+        jbAddTelNumber.addActionListener(listenControllers);} 
      
-    public void addBtnjbAddListener(MouseListener listenControllers){
-        jbAdd.addMouseListener(listenControllers); }
+    public void addBtnjbAddListener(ActionListener listenControllers){
+        jbAdd.addActionListener(listenControllers); }
         
-    public void addBtnjbDeleteListener(MouseListener listenControllers){
-        jbDelete.addMouseListener(listenControllers);}
+    public void addBtnjbDeleteListener(ActionListener listenControllers){
+        jbDelete.addActionListener(listenControllers);}
         
-    public void addBtnjbListListener(MouseListener listenControllers){
-        jbList.addMouseListener(listenControllers);}
+    public void addBtnjbListListener(ActionListener listenControllers){
+        jbList.addActionListener(listenControllers);}
                 
-    public void addBtnjbUpdateListener(MouseListener listenControllers){
-        jbUpdate.addMouseListener(listenControllers);}
+    public void addBtnjbUpdateListener(ActionListener listenControllers){
+        jbUpdate.addActionListener(listenControllers);}
     
-    public void addBtnjbSearchIdListener(MouseListener listenControllers){
-        jbSearchId.addMouseListener(listenControllers);}
+    public void addBtnjbSearchIdListener(ActionListener listenControllers){
+        jbSearchId.addActionListener(listenControllers);}
     
-    String getTextjtfName() {
+    public String getTextjtfName() {
         String text = jtfName.getText();
         return text;
     }
     
-    String getTextjtfLastName() {
+    public String getTextjtfLastName() {
         String text = jtfLastName.getText();
         return text;
     }
     
-    String getTextjtfId() {
+    public String getTextjtfId() {
         String text = jtfId.getText();
         return text;
     }
     
-    String getTexjtfBirthDate() {
+    public String getTexjtfBirthDate() {
         String text = jtfBirthDate.getText();
         return text;
     }
     
-    String getTexjtfAdress() {
+    public String getTexjtfAdress() {
         String text = jtfAdress.getText();
         return text;
     }
     
-    String getTextjtfTelNumber() {
+    public String getTextjtfTelNumber() {
         String text = jtfTelNumber.getText();
         return text;
     }
     
     public String getSelectedjcbSelectType() {
-        Object selected = jcbSelectType.getSelectedItem();
-        return (String) selected;
+        return (String) jcbSelectType.getSelectedItem();
+        
     }
     
     public String getSelectedjcbTelType() {
         Object selected = jcbTelType.getSelectedItem();
         return (String) selected;
+    }
+    
+    public void setJtaInfo(String text)
+    {
+        jTextArea2.setText(text);
+    }
+    
+    public String getJtaInfo()
+    {
+        return jTextArea2.getText();
+    }
+    
+    public void clearAddres()
+    {
+        jtfAdress.setText("");
+    }
+    
+    public void clearPhone()
+    {
+        jtfTelNumber.setText("");
+        jcbTelType.setSelectedIndex(-1);
     }
     
     
@@ -123,21 +146,23 @@ public class ViewDirectory extends javax.swing.JFrame {
         jlId2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 700));
+        setMinimumSize(new java.awt.Dimension(700, 650));
+        setPreferredSize(new java.awt.Dimension(700, 600));
+        setSize(new java.awt.Dimension(700, 600));
         getContentPane().setLayout(null);
 
         jlHeader1.setFont(new java.awt.Font("Courier New", 1, 48)); // NOI18N
         jlHeader1.setText("DIRECTORIO ");
         getContentPane().add(jlHeader1);
-        jlHeader1.setBounds(280, 10, 319, 88);
+        jlHeader1.setBounds(280, 10, 317, 88);
 
         jlErrorPanel1.setText("error panel ");
         getContentPane().add(jlErrorPanel1);
-        jlErrorPanel1.setBounds(10, 110, 581, 16);
+        jlErrorPanel1.setBounds(40, 110, 581, 16);
 
         jlType1.setText("TIPO:");
         getContentPane().add(jlType1);
-        jlType1.setBounds(40, 140, 40, 16);
+        jlType1.setBounds(40, 140, 130, 16);
 
         jlNames1.setText("NOMBRES:");
         getContentPane().add(jlNames1);
@@ -153,7 +178,7 @@ public class ViewDirectory extends javax.swing.JFrame {
 
         jlBirthDate1.setText("FECHA DE NACIMIENTO:");
         getContentPane().add(jlBirthDate1);
-        jlBirthDate1.setBounds(40, 260, 132, 16);
+        jlBirthDate1.setBounds(40, 260, 180, 16);
 
         jlAdress1.setText("DIRECCION(ES):");
         getContentPane().add(jlAdress1);
@@ -165,29 +190,29 @@ public class ViewDirectory extends javax.swing.JFrame {
 
         jcbSelectType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PROFESOR", "ESTUDIANTE ", "EMPLEADO" }));
         getContentPane().add(jcbSelectType);
-        jcbSelectType.setBounds(280, 140, 103, 22);
+        jcbSelectType.setBounds(280, 140, 110, 26);
 
-        jbAdd.setText("AGREGAR");
+        jbAdd.setText("GUARDAR");
         getContentPane().add(jbAdd);
-        jbAdd.setBounds(420, 670, 120, 23);
+        jbAdd.setBounds(420, 670, 120, 27);
 
         jbUpdate.setText("ACTUALIZAR");
         getContentPane().add(jbUpdate);
-        jbUpdate.setBounds(290, 670, 120, 23);
+        jbUpdate.setBounds(290, 670, 120, 27);
 
         jbDelete.setText("BORRAR");
         getContentPane().add(jbDelete);
-        jbDelete.setBounds(30, 670, 120, 23);
+        jbDelete.setBounds(30, 670, 120, 27);
 
         jbList.setText("LISTAR");
         getContentPane().add(jbList);
-        jbList.setBounds(160, 670, 120, 23);
+        jbList.setBounds(160, 670, 120, 27);
         getContentPane().add(jtfName);
-        jtfName.setBounds(280, 170, 340, 22);
+        jtfName.setBounds(280, 170, 340, 26);
         getContentPane().add(jtfLastName);
-        jtfLastName.setBounds(280, 200, 340, 22);
+        jtfLastName.setBounds(280, 200, 340, 26);
         getContentPane().add(jtfId);
-        jtfId.setBounds(280, 230, 167, 22);
+        jtfId.setBounds(280, 230, 167, 26);
 
         jtfBirthDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,11 +220,11 @@ public class ViewDirectory extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jtfBirthDate);
-        jtfBirthDate.setBounds(280, 260, 167, 22);
+        jtfBirthDate.setBounds(280, 260, 167, 26);
         getContentPane().add(jtfAdress);
-        jtfAdress.setBounds(280, 290, 167, 22);
+        jtfAdress.setBounds(280, 290, 167, 26);
         getContentPane().add(jtfTelNumber1);
-        jtfTelNumber1.setBounds(590, 640, 167, 22);
+        jtfTelNumber1.setBounds(590, 640, 167, 26);
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -218,15 +243,15 @@ public class ViewDirectory extends javax.swing.JFrame {
 
         jcbTelType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MOVIL", "CASA", "OFICINA", "OTRO" }));
         getContentPane().add(jcbTelType);
-        jcbTelType.setBounds(510, 320, 90, 22);
+        jcbTelType.setBounds(510, 320, 90, 26);
 
-        jbAddAddress.setText("AGREGAR");
+        jbAddAddress.setText("AÑADIR DIR");
         getContentPane().add(jbAddAddress);
-        jbAddAddress.setBounds(630, 290, 100, 23);
+        jbAddAddress.setBounds(610, 290, 120, 27);
 
-        jbAddTelNumber.setText("AGREGAR");
+        jbAddTelNumber.setText("AÑADIR TEL");
         getContentPane().add(jbAddTelNumber);
-        jbAddTelNumber.setBounds(630, 320, 100, 23);
+        jbAddTelNumber.setBounds(610, 320, 120, 27);
 
         jbSearchId.setText("BUSCAR POR ID");
         jbSearchId.addActionListener(new java.awt.event.ActionListener() {
@@ -235,13 +260,13 @@ public class ViewDirectory extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jbSearchId);
-        jbSearchId.setBounds(570, 670, 200, 23);
+        jbSearchId.setBounds(570, 670, 200, 27);
         getContentPane().add(jtfTelNumber);
-        jtfTelNumber.setBounds(280, 320, 167, 22);
+        jtfTelNumber.setBounds(280, 320, 167, 26);
 
         jlId2.setText("ID:");
         getContentPane().add(jlId2);
-        jlId2.setBounds(40, 230, 14, 16);
+        jlId2.setBounds(40, 230, 130, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

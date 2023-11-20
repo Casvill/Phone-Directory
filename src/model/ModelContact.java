@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,20 +12,20 @@ public class ModelContact
     private String name;
     private String lastName;
     private String id;
-    private Date bithDate;
+    private String birthDate;
     private List<String> address;
     private HashMap<String,String> phone;
-    private byte type;
+    private String type; // 1- Teacher, 2- Student, 3- Employee
 
     public ModelContact() {
     }
 
-    public ModelContact(String name, String lastName, String id, Date bithDate, List<String> address, HashMap<String, String> phone, byte type) 
+    public ModelContact(String name, String lastName, String id, String birthDate, List<String> address, HashMap<String, String> phone, String type) 
     {
         this.name = name;
         this.lastName = lastName;
         this.id = id;
-        this.bithDate = bithDate;
+        this.birthDate = birthDate;
         this.address = address;
         this.phone = phone;
         this.type = type;
@@ -58,12 +57,12 @@ public class ModelContact
         this.id = id;
     }
 
-    public Date getBithDate() {
-        return bithDate;
+    public String getBithDate() {
+        return birthDate;
     }
 
-    public void setBithDate(Date bithDate) {
-        this.bithDate = bithDate;
+    public void setBithDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     public List<String> getAddress() {
@@ -82,11 +81,11 @@ public class ModelContact
         this.phone = phone;
     }
 
-    public byte getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(byte type) {
+    public void setType(String type) {
         this.type = type;
     }
     
