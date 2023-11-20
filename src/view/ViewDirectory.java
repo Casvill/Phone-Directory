@@ -41,6 +41,45 @@ public class ViewDirectory extends javax.swing.JFrame {
     public void addBtnjbSearchIdListener(MouseListener listenControllers){
         jbSearchId.addMouseListener(listenControllers);}
     
+    String getTextjtfName() {
+        String text = jtfName.getText();
+        return text;
+    }
+    
+    String getTextjtfLastName() {
+        String text = jtfLastName.getText();
+        return text;
+    }
+    
+    String getTextjtfId() {
+        String text = jtfId.getText();
+        return text;
+    }
+    
+    String getTexjtfBirthDate() {
+        String text = jtfBirthDate.getText();
+        return text;
+    }
+    
+    String getTexjtfAdress() {
+        String text = jtfAdress.getText();
+        return text;
+    }
+    
+    String getTextjtfTelNumber() {
+        String text = jtfTelNumber.getText();
+        return text;
+    }
+    
+    public String getSelectedjcbSelectType() {
+        Object selected = jcbSelectType.getSelectedItem();
+        return (String) selected;
+    }
+    
+    public String getSelectedjcbTelType() {
+        Object selected = jcbTelType.getSelectedItem();
+        return (String) selected;
+    }
     
     
     /**
@@ -61,26 +100,26 @@ public class ViewDirectory extends javax.swing.JFrame {
         jlBirthDate1 = new javax.swing.JLabel();
         jlAdress1 = new javax.swing.JLabel();
         jlTelNumber1 = new javax.swing.JLabel();
-        jcbSelectType1 = new javax.swing.JComboBox<>();
+        jcbSelectType = new javax.swing.JComboBox<>();
         jbAdd = new javax.swing.JButton();
         jbUpdate = new javax.swing.JButton();
         jbDelete = new javax.swing.JButton();
         jbList = new javax.swing.JButton();
-        jtfName1 = new javax.swing.JTextField();
-        jtfLastName1 = new javax.swing.JTextField();
-        jtfId1 = new javax.swing.JTextField();
-        jtfBirthDate1 = new javax.swing.JTextField();
-        jtfAdress1 = new javax.swing.JTextField();
+        jtfName = new javax.swing.JTextField();
+        jtfLastName = new javax.swing.JTextField();
+        jtfId = new javax.swing.JTextField();
+        jtfBirthDate = new javax.swing.JTextField();
+        jtfAdress = new javax.swing.JTextField();
         jtfTelNumber1 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jlType8 = new javax.swing.JLabel();
-        jcbTelType1 = new javax.swing.JComboBox<>();
+        jcbTelType = new javax.swing.JComboBox<>();
         jbAddAddress = new javax.swing.JButton();
         jbAddTelNumber = new javax.swing.JButton();
         jbSearchId = new javax.swing.JButton();
-        jtfTelNumber2 = new javax.swing.JTextField();
+        jtfTelNumber = new javax.swing.JTextField();
         jlId2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -124,9 +163,9 @@ public class ViewDirectory extends javax.swing.JFrame {
         getContentPane().add(jlTelNumber1);
         jlTelNumber1.setBounds(40, 320, 100, 16);
 
-        jcbSelectType1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PROFESOR", "ESTUDIANTE ", "EMPLEADO" }));
-        getContentPane().add(jcbSelectType1);
-        jcbSelectType1.setBounds(280, 140, 103, 22);
+        jcbSelectType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PROFESOR", "ESTUDIANTE ", "EMPLEADO" }));
+        getContentPane().add(jcbSelectType);
+        jcbSelectType.setBounds(280, 140, 103, 22);
 
         jbAdd.setText("AGREGAR");
         getContentPane().add(jbAdd);
@@ -143,22 +182,22 @@ public class ViewDirectory extends javax.swing.JFrame {
         jbList.setText("LISTAR");
         getContentPane().add(jbList);
         jbList.setBounds(160, 670, 120, 23);
-        getContentPane().add(jtfName1);
-        jtfName1.setBounds(280, 170, 340, 22);
-        getContentPane().add(jtfLastName1);
-        jtfLastName1.setBounds(280, 200, 340, 22);
-        getContentPane().add(jtfId1);
-        jtfId1.setBounds(280, 230, 167, 22);
+        getContentPane().add(jtfName);
+        jtfName.setBounds(280, 170, 340, 22);
+        getContentPane().add(jtfLastName);
+        jtfLastName.setBounds(280, 200, 340, 22);
+        getContentPane().add(jtfId);
+        jtfId.setBounds(280, 230, 167, 22);
 
-        jtfBirthDate1.addActionListener(new java.awt.event.ActionListener() {
+        jtfBirthDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfBirthDate1ActionPerformed(evt);
+                jtfBirthDateActionPerformed(evt);
             }
         });
-        getContentPane().add(jtfBirthDate1);
-        jtfBirthDate1.setBounds(280, 260, 167, 22);
-        getContentPane().add(jtfAdress1);
-        jtfAdress1.setBounds(280, 290, 167, 22);
+        getContentPane().add(jtfBirthDate);
+        jtfBirthDate.setBounds(280, 260, 167, 22);
+        getContentPane().add(jtfAdress);
+        jtfAdress.setBounds(280, 290, 167, 22);
         getContentPane().add(jtfTelNumber1);
         jtfTelNumber1.setBounds(590, 640, 167, 22);
 
@@ -177,9 +216,9 @@ public class ViewDirectory extends javax.swing.JFrame {
         getContentPane().add(jlType8);
         jlType8.setBounds(460, 320, 40, 16);
 
-        jcbTelType1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MOVIL", "CASA", "OFICINA", "OTRO" }));
-        getContentPane().add(jcbTelType1);
-        jcbTelType1.setBounds(510, 320, 90, 22);
+        jcbTelType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MOVIL", "CASA", "OFICINA", "OTRO" }));
+        getContentPane().add(jcbTelType);
+        jcbTelType.setBounds(510, 320, 90, 22);
 
         jbAddAddress.setText("AGREGAR");
         getContentPane().add(jbAddAddress);
@@ -197,8 +236,8 @@ public class ViewDirectory extends javax.swing.JFrame {
         });
         getContentPane().add(jbSearchId);
         jbSearchId.setBounds(570, 670, 200, 23);
-        getContentPane().add(jtfTelNumber2);
-        jtfTelNumber2.setBounds(280, 320, 167, 22);
+        getContentPane().add(jtfTelNumber);
+        jtfTelNumber.setBounds(280, 320, 167, 22);
 
         jlId2.setText("ID:");
         getContentPane().add(jlId2);
@@ -211,9 +250,9 @@ public class ViewDirectory extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jbSearchIdActionPerformed
 
-    private void jtfBirthDate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfBirthDate1ActionPerformed
+    private void jtfBirthDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfBirthDateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfBirthDate1ActionPerformed
+    }//GEN-LAST:event_jtfBirthDateActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
@@ -226,8 +265,8 @@ public class ViewDirectory extends javax.swing.JFrame {
     private javax.swing.JButton jbList;
     private javax.swing.JButton jbSearchId;
     private javax.swing.JButton jbUpdate;
-    private javax.swing.JComboBox<String> jcbSelectType1;
-    private javax.swing.JComboBox<String> jcbTelType1;
+    private javax.swing.JComboBox<String> jcbSelectType;
+    private javax.swing.JComboBox<String> jcbTelType;
     private javax.swing.JLabel jlAdress1;
     private javax.swing.JLabel jlBirthDate1;
     private javax.swing.JLabel jlErrorPanel1;
@@ -239,12 +278,12 @@ public class ViewDirectory extends javax.swing.JFrame {
     private javax.swing.JLabel jlTelNumber1;
     private javax.swing.JLabel jlType1;
     private javax.swing.JLabel jlType8;
-    private javax.swing.JTextField jtfAdress1;
-    private javax.swing.JTextField jtfBirthDate1;
-    private javax.swing.JTextField jtfId1;
-    private javax.swing.JTextField jtfLastName1;
-    private javax.swing.JTextField jtfName1;
+    private javax.swing.JTextField jtfAdress;
+    private javax.swing.JTextField jtfBirthDate;
+    private javax.swing.JTextField jtfId;
+    private javax.swing.JTextField jtfLastName;
+    private javax.swing.JTextField jtfName;
+    private javax.swing.JTextField jtfTelNumber;
     private javax.swing.JTextField jtfTelNumber1;
-    private javax.swing.JTextField jtfTelNumber2;
     // End of variables declaration//GEN-END:variables
 }
