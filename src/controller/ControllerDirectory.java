@@ -135,6 +135,11 @@ public class ControllerDirectory
         
         return message.toString();
     }
+    
+    public boolean updateContact(ModelContact contact)
+    {
+        return directory.updateContact(contact);
+    }
 
     
     public void addExampleContacts() 
@@ -376,9 +381,17 @@ public class ControllerDirectory
                 {
                     address.add(addrs);
                 }
-                
+                             
                 ModelContact contact = new ModelContact(name, lastName, id, birthDate, address, phone, type);
-                directory.updateContact(contact);
+                if(updateContact(contact))
+                {
+                    JOptionPane.showMessageDialog(null,"Contacto actualizado exitosamente!","Contacto actualizado",JRootPane.INFORMATION_DIALOG);   
+                    viewDirectory.clearForm();
+                }
+                else
+                {
+                    warningMessage("El contacto no pudo ser actualizado.");
+                }
             }
         }
         

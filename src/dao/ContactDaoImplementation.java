@@ -50,12 +50,15 @@ public class ContactDaoImplementation implements IContactDao
     @Override
     public boolean updateContact(ModelContact contact) 
     {
-        if(contacts.contains(contact))
+        for(ModelContact contactB: contacts)
         {
-            int pos = contacts.indexOf(contact);
-            contacts.set(pos, contact);
+            if(contactB.getId().strip().equals(contact.getId().strip()))
+            {
+                int pos = contacts.indexOf(contactB);
+                contacts.set(pos, contact);
             
-            return true;                    
+                return true;
+            }
         }
         
         return false;
