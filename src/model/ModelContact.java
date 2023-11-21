@@ -57,7 +57,7 @@ public class ModelContact
         this.id = id;
     }
 
-    public String getBithDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 

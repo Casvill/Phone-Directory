@@ -5,6 +5,8 @@
 package view;
 
 import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 /**
  *
@@ -93,6 +95,43 @@ public class ViewDirectory extends javax.swing.JFrame {
         return jTextArea2.getText();
     }
     
+    public String getJtfTelNumber1Text()
+    {
+        return jtfTelNumber1.getText();
+    }
+
+    public void setJtfAdress(String text) {
+        this.jtfAdress.setText(text);
+    }
+
+    public void setJtfBirthDate(String text) {
+        this.jtfBirthDate.setText(text);
+    }
+
+    public void setJtfId(String text) {
+        this.jtfId.setText(text);
+    }
+
+    public void setJtfLastName (String text) {
+        this.jtfLastName.setText(text);
+    }
+
+    public void setJtfName(String text) {
+        this.jtfName.setText(text);
+    }
+
+    public void setJtfTelNumber(String text) {
+        this.jtfTelNumber.setText(text);
+    }        
+
+    public void setJcbSelectType(String selected) {
+        this.jcbSelectType.setSelectedItem(selected);
+    }
+
+    public void setJcbTelType(String selected) {
+        this.jcbTelType.setSelectedItem(selected);
+    }
+    
     public void clearAddres()
     {
         jtfAdress.setText("");
@@ -102,6 +141,17 @@ public class ViewDirectory extends javax.swing.JFrame {
     {
         jtfTelNumber.setText("");
         jcbTelType.setSelectedIndex(-1);
+    }
+    
+    public void clearForm()
+    {
+        clearAddres();
+        clearPhone();
+        jcbSelectType.setSelectedIndex(-1);
+        jtfName.setText("");
+        jtfLastName.setText("");
+        jtfId.setText("");
+        jtfBirthDate.setText("");
     }
     
     
@@ -174,7 +224,7 @@ public class ViewDirectory extends javax.swing.JFrame {
 
         jlId1.setText("ID QUE DESEA BUSCAR:");
         getContentPane().add(jlId1);
-        jlId1.setBounds(610, 620, 140, 16);
+        jlId1.setBounds(600, 620, 170, 16);
 
         jlBirthDate1.setText("FECHA DE NACIMIENTO:");
         getContentPane().add(jlBirthDate1);
@@ -188,9 +238,9 @@ public class ViewDirectory extends javax.swing.JFrame {
         getContentPane().add(jlTelNumber1);
         jlTelNumber1.setBounds(40, 320, 100, 16);
 
-        jcbSelectType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PROFESOR", "ESTUDIANTE ", "EMPLEADO" }));
+        jcbSelectType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PROFESOR", "ESTUDIANTE", "EMPLEADO" }));
         getContentPane().add(jcbSelectType);
-        jcbSelectType.setBounds(280, 140, 110, 26);
+        jcbSelectType.setBounds(280, 140, 107, 26);
 
         jbAdd.setText("GUARDAR");
         getContentPane().add(jbAdd);
