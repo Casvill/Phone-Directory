@@ -5,6 +5,8 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
@@ -66,12 +68,12 @@ public class ViewDirectory extends javax.swing.JFrame {
     }
     
     public String getTexjtfAdress() {
-        String text = jtfAdress.getText();
+        String text = (String) jtfAdress.getSelectedItem();
         return text;
     }
     
     public String getTextjtfTelNumber() {
-        String text = jtfTelNumber.getText();
+        String text = (String) jtfTelNumber.getSelectedItem();
         return text;
     }
     
@@ -101,7 +103,7 @@ public class ViewDirectory extends javax.swing.JFrame {
     }
 
     public void setJtfAdress(String text) {
-        this.jtfAdress.setText(text);
+        this.jtfAdress.setSelectedItem(text);
     }
 
     public void setJtfBirthDate(String text) {
@@ -121,7 +123,7 @@ public class ViewDirectory extends javax.swing.JFrame {
     }
 
     public void setJtfTelNumber(String text) {
-        this.jtfTelNumber.setText(text);
+        this.jtfTelNumber.setSelectedItem(text);
     }        
 
     public void setJcbSelectType(String selected) {
@@ -134,12 +136,35 @@ public class ViewDirectory extends javax.swing.JFrame {
     
     public void clearAddres()
     {
-        jtfAdress.setText("");
+        jtfAdress.removeAllItems();
+    }
+    
+    public void jtfAdresAddItem(String text)
+    {
+        jtfAdress.addItem(text);
+        jtfAdress.setSelectedIndex(-1);
+    }
+    
+    public List<String> jtfAdresGetAllItems()
+    {
+        List<String> list = new ArrayList<String>();
+        
+        for(int i = 0; i < jtfAdress.getItemCount(); i++)
+        {
+            list.add(jtfAdress.getItemAt(i));
+        }
+        return list;
+    }
+    
+    public void jtfPhoneAddItem(String text)
+    {
+        jtfTelNumber.addItem(text);
+        jtfTelNumber.setSelectedIndex(-1);
     }
     
     public void clearPhone()
     {
-        jtfTelNumber.setText("");
+        jtfTelNumber.removeAllItems();
         jcbTelType.setSelectedIndex(-1);
     }
     
@@ -182,7 +207,6 @@ public class ViewDirectory extends javax.swing.JFrame {
         jtfLastName = new javax.swing.JTextField();
         jtfId = new javax.swing.JTextField();
         jtfBirthDate = new javax.swing.JTextField();
-        jtfAdress = new javax.swing.JTextField();
         jtfTelNumber1 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
@@ -192,8 +216,9 @@ public class ViewDirectory extends javax.swing.JFrame {
         jbAddAddress = new javax.swing.JButton();
         jbAddTelNumber = new javax.swing.JButton();
         jbSearchId = new javax.swing.JButton();
-        jtfTelNumber = new javax.swing.JTextField();
         jlId2 = new javax.swing.JLabel();
+        jtfAdress = new javax.swing.JComboBox<>();
+        jtfTelNumber = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 650));
@@ -271,8 +296,6 @@ public class ViewDirectory extends javax.swing.JFrame {
         });
         getContentPane().add(jtfBirthDate);
         jtfBirthDate.setBounds(280, 260, 167, 26);
-        getContentPane().add(jtfAdress);
-        jtfAdress.setBounds(280, 290, 167, 26);
         getContentPane().add(jtfTelNumber1);
         jtfTelNumber1.setBounds(590, 640, 167, 26);
 
@@ -311,12 +334,18 @@ public class ViewDirectory extends javax.swing.JFrame {
         });
         getContentPane().add(jbSearchId);
         jbSearchId.setBounds(570, 670, 200, 27);
-        getContentPane().add(jtfTelNumber);
-        jtfTelNumber.setBounds(280, 320, 167, 26);
 
         jlId2.setText("ID:");
         getContentPane().add(jlId2);
         jlId2.setBounds(40, 230, 130, 16);
+
+        jtfAdress.setEditable(true);
+        getContentPane().add(jtfAdress);
+        jtfAdress.setBounds(280, 290, 170, 26);
+
+        jtfTelNumber.setEditable(true);
+        getContentPane().add(jtfTelNumber);
+        jtfTelNumber.setBounds(280, 320, 170, 26);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -353,12 +382,12 @@ public class ViewDirectory extends javax.swing.JFrame {
     private javax.swing.JLabel jlTelNumber1;
     private javax.swing.JLabel jlType1;
     private javax.swing.JLabel jlType8;
-    private javax.swing.JTextField jtfAdress;
+    private javax.swing.JComboBox<String> jtfAdress;
     private javax.swing.JTextField jtfBirthDate;
     private javax.swing.JTextField jtfId;
     private javax.swing.JTextField jtfLastName;
     private javax.swing.JTextField jtfName;
-    private javax.swing.JTextField jtfTelNumber;
+    private javax.swing.JComboBox<String> jtfTelNumber;
     private javax.swing.JTextField jtfTelNumber1;
     // End of variables declaration//GEN-END:variables
 }

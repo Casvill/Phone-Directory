@@ -44,17 +44,7 @@ public class ControllerDirectory
     
     public boolean addContact(ModelContact contact)
     {
-        List<ModelContact> contacts = directory.getAllContacts();
-        String id = contact.getId();
-        for (ModelContact contact2 : contacts) 
-        {
-            if(contact2.getId().equals(id))
-            {
-                return false;
-            }
-        }
-        directory.addContact(contact);
-        return true;
+        return directory.addContact(contact);
     }
     
     public String getContacts() 
@@ -254,6 +244,7 @@ public class ControllerDirectory
                 else
                 {
                     address.add(dir);
+                    viewDirectory.jtfAdresAddItem(dir);
                     viewDirectory.clearAddres();
                 }
 
@@ -274,14 +265,14 @@ public class ControllerDirectory
                     warningMessage("Por favor llene todos los campos.");
                 }
                 
-                else if(address.size() < 1 && viewDirectory.getTexjtfAdress().strip().equals(""))
+                else if(address.size() < 1 && viewDirectory.getTexjtfAdress() == null)
                 {
                     warningMessage("Por favor agregue al menos una dirección.");
                     System.out.println(address.size());
                     System.out.println("Dirs 2:"+address);
                 }
                 
-                else if(phone.size() < 1 && (viewDirectory.getTextjtfTelNumber().strip().equals("") || viewDirectory.getSelectedjcbTelType() == null))
+                else if(phone.size() < 1 && (viewDirectory.getTextjtfTelNumber() == null || viewDirectory.getSelectedjcbTelType() == null))
                 {
                     warningMessage("Por favor agregue al menos un número telefónico.");
                     System.out.println(address.size());
@@ -293,20 +284,24 @@ public class ControllerDirectory
                     String telNumber = viewDirectory.getTextjtfTelNumber();
                     String telType = viewDirectory.getSelectedjcbTelType();
                     String addrs = viewDirectory.getTexjtfAdress();
-                    if(!(telNumber.strip().equals("")) && telType != null)
+                    if( telNumber != null && telType != null)
                     {
                         phone.put(telType, telNumber);
                     }
-                    if(!(addrs.strip().equals("")))
+                    if(addrs != null)
                     {
                         address.add(addrs);
                     }
-                    ModelContact contact = new ModelContact(name, lastName, id, birthDate, address, phone, type);
-                    if(addContact(contact))
+                    
+                    ModelContact contact = new ModelContact(name, lastName, id, birthDate, new ArrayList<>(address), new HashMap<>(phone), type);
+                    boolean add = addContact(contact);
+                    if(add)
                     {
                         JOptionPane.showMessageDialog(null,"Contacto añadido exitosamente!","Contacto añadido",JRootPane.INFORMATION_DIALOG);   
                         viewDirectory.setJtaInfo(getContacts());
                         viewDirectory.clearForm();
+                        phone.clear();
+                        address.clear();
                     }
                     else
                     {
@@ -344,6 +339,15 @@ public class ControllerDirectory
                         viewDirectory.setJtfId(id);
                         viewDirectory.setJtfBirthDate(contact.getBirthDate());
                         viewDirectory.setJtaInfo(getContact(contact));
+                        for(String adrs: contact.getAddress())
+                        {
+                            viewDirectory.jtfAdresAddItem(adrs);
+                        }
+                        
+                        for (Map.Entry<String, String> entry : contact.getPhone().entrySet()) 
+                        {
+                            viewDirectory.jtfPhoneAddItem(entry.getValue());
+                        }
                     }
                     catch(Exception error)
                     {
@@ -372,21 +376,26 @@ public class ControllerDirectory
                 String telType = viewDirectory.getSelectedjcbTelType();
                 String addrs = viewDirectory.getTexjtfAdress();
                 
-                if(!(telNumber.strip().equals("")) && telType != null)
+                if(telNumber != null && telType != null)
                 {
                     phone.put(telType, telNumber);
                 }
                 
-                if(!(addrs.strip().equals("")))
+                if(addrs != null)
                 {
                     address.add(addrs);
                 }
-                             
-                ModelContact contact = new ModelContact(name, lastName, id, birthDate, address, phone, type);
+                for(String item: viewDirectory.jtfAdresGetAllItems())
+                {
+                    address.add(item);
+                }
+                ModelContact contact = new ModelContact(name, lastName, id, birthDate, new ArrayList<>(address), new HashMap<>(phone), type);
                 if(updateContact(contact))
                 {
                     JOptionPane.showMessageDialog(null,"Contacto actualizado exitosamente!","Contacto actualizado",JRootPane.INFORMATION_DIALOG);   
                     viewDirectory.clearForm();
+                    phone.clear();
+                    address.clear();
                 }
                 else
                 {

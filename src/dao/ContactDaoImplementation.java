@@ -43,6 +43,14 @@ public class ContactDaoImplementation implements IContactDao
     @Override
     public boolean addContact(ModelContact contact) 
     {
+        for(ModelContact contactB: contacts)
+        {
+            if(contactB.getId().strip().equals(contact.getId().strip()))
+            {
+                return false;
+            }
+        }
+        
         contacts.add(contact);
         return true;
     }

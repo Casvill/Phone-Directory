@@ -15,7 +15,7 @@ public class ModelContact
     private String birthDate;
     private List<String> address;
     private HashMap<String,String> phone;
-    private String type; // 1- Teacher, 2- Student, 3- Employee
+    private String type;
 
     public ModelContact() {
     }
