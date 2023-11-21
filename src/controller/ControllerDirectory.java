@@ -38,6 +38,8 @@ public class ControllerDirectory
         this.viewDirectory.addBtnjbListListener(new DirectoryListener());
         this.viewDirectory.addBtnjbSearchIdListener(new DirectoryListener());
         this.viewDirectory.addBtnjbUpdateListener(new DirectoryListener());
+        this.viewDirectory.addBtnjbremoveDirListener(new DirectoryListener());
+        this.viewDirectory.addBtnjbremoveTelListener(new DirectoryListener());
         
         addExampleContacts();
     } 
@@ -62,21 +64,21 @@ public class ControllerDirectory
             message.append("  Tipo: ").append(contact.getType()).append("\n");
           
             List<String> addresses = contact.getAddress();
-            message.append("  Direcciones: ");
+            message.append("  Direcciones: \n\t");
             
             for (String address : addresses) 
             {
-                message.append(address).append(", ");
+                message.append(address).append("\n\t");
             }
 
             message.delete(message.length() - 2, message.length()).append("\n");
 
             HashMap<String, String> phones = contact.getPhone();
-            message.append("  Teléfonos: ");
+            message.append("  Teléfonos: \n\t");
             
             for (Map.Entry<String, String> entry : phones.entrySet()) 
             {
-                message.append(entry.getValue()).append(": ").append(entry.getKey()).append(", ");
+                message.append(entry.getValue()).append(": ").append(entry.getKey()).append("\n\t");
             }
             
             message.delete(message.length() - 2, message.length()).append("\n");
@@ -101,21 +103,21 @@ public class ControllerDirectory
         message.append("  Tipo: ").append(contact.getType()).append("\n");
 
         List<String> addresses = contact.getAddress();
-        message.append("  Direcciones: ");
+        message.append("  Direcciones: \n\t");
 
         for (String address : addresses) 
         {
-            message.append(address).append(", ");
+            message.append(address).append("\n\t");
         }
 
         message.delete(message.length() - 2, message.length()).append("\n");
 
         HashMap<String, String> phones = contact.getPhone();
-        message.append("  Teléfonos: ");
+        message.append("  Teléfonos: \n\t");
 
         for (Map.Entry<String, String> entry : phones.entrySet()) 
         {
-            message.append(entry.getValue()).append(": ").append(entry.getKey()).append(", ");
+            message.append(entry.getValue()).append(": ").append(entry.getKey()).append("\n\t");
         }
 
         message.delete(message.length() - 2, message.length()).append("\n");
@@ -209,46 +211,14 @@ public class ControllerDirectory
             
             if(e.getActionCommand().equalsIgnoreCase("AÑADIR TEL"))
             {
-                String type = viewDirectory.getSelectedjcbTelType();
-                String number = viewDirectory.getTextjtfTelNumber();
-                if(type == null)
-                {
-                    warningMessage("Por favor escoja el tipo de teléfono");
-                }
-                
-                else if(number == null)
-                {
-                    warningMessage("Escriba el número telefónico");
-                }
-                
-                else
-                {
-                    phone.put(number, type);
-//                    viewDirectory.clearPhone();
-                    viewDirectory.jtfPhoneAddItem(number+" ("+type+")");
-                    System.out.println("Phones:"+phone);
-                }
-                
+                viewDirectory.addPhoneButton();
             }
             
             //------------------------------------------------------------------------------------
             
             if(e.getActionCommand().equalsIgnoreCase("AÑADIR DIR"))
             {
-                String dir = viewDirectory.getTexjtfAdress();
-                
-                if(dir == null)
-                {
-                    warningMessage("Por favor escriba la dirección");
-                }
-                
-                else
-                {
-                    address.add(dir);
-                    viewDirectory.jtfAdresAddItem(dir);
-//                    viewDirectory.clearAddres();                  
-                }
-
+                viewDirectory.addDirButton();
             }
             
             //------------------------------------------------------------------------------------
@@ -266,29 +236,20 @@ public class ControllerDirectory
                     warningMessage("Por favor llene todos los campos.");
                 }
                 
-                else if(address.size() < 1 && viewDirectory.getTexjtfAdress() == null)
+                else if(viewDirectory.isEmptyDirs())
                 {
                     warningMessage("Por favor agregue al menos una dirección.");
                 }
                 
-                else if(phone.size() < 1 && (viewDirectory.getTextjtfTelNumber() == null || viewDirectory.getSelectedjcbTelType() == null))
+                else if(viewDirectory.isEmptyNumbers())
                 {
                     warningMessage("Por favor agregue al menos un número telefónico.");
                 }
                 
                 else
                 {
-                    String telNumber = viewDirectory.getTextjtfTelNumber();
-                    String telType = viewDirectory.getSelectedjcbTelType();
-                    String addrs = viewDirectory.getTexjtfAdress();
-                    if( telNumber != null && telType != null)
-                    {
-                        phone.put(telNumber,telType);
-                    }
-                    if(addrs != null)
-                    {
-                        address.add(addrs);
-                    }
+                    phone = viewDirectory.getNumbers();
+                    address = viewDirectory.getDirs();
                     
                     ModelContact contact = new ModelContact(name, lastName, id, birthDate, new ArrayList<>(address), new HashMap<>(phone), type);
                     boolean add = addContact(contact);
@@ -338,12 +299,12 @@ public class ControllerDirectory
                         viewDirectory.setJtaInfo(getContact(contact));
                         for(String adrs: contact.getAddress())
                         {
-                            viewDirectory.jtfAdresAddItem(adrs);
+                            viewDirectory.addDir(adrs);
                         }
                         
                         for (Map.Entry<String, String> entry : contact.getPhone().entrySet()) 
                         {
-                            viewDirectory.jtfPhoneAddItem(entry.getKey()+" ("+entry.getValue()+")");
+                            viewDirectory.addPhone(entry.getValue()+": "+entry.getKey());
                         }
                     }
                     catch(Exception error)
@@ -357,56 +318,55 @@ public class ControllerDirectory
             
             if(e.getActionCommand().equalsIgnoreCase("ACTUALIZAR"))
             {
-                System.out.println("a");
                 String name = viewDirectory.getTextjtfName();
                 String lastName = viewDirectory.getTextjtfLastName();
                 String id = viewDirectory.getTextjtfId();
                 String birthDate = viewDirectory.getTexjtfBirthDate();
                 String type = viewDirectory.getSelectedjcbSelectType(); 
+                address = viewDirectory.getDirs();
+                phone = viewDirectory.getNumbers();
                 
                 if(name.strip().equals("") || lastName.strip().equals("") || id.strip().equals("") || birthDate.strip().equals("") || type.strip().equals(""))
                 {
                     warningMessage("Por favor llene todos los campos.");
                 }
-                                
-                String telNumber = viewDirectory.getTextjtfTelNumber();
-                String telType = viewDirectory.getSelectedjcbTelType();
-                String addrs = viewDirectory.getTexjtfAdress();
-                
-                if(telNumber != null && telType != null)
+
+                else if(address.isEmpty())
                 {
-                    phone.put(telNumber,telType);
+                    warningMessage("Debe añadir al menos una dirección.");
                 }
                 
-                if(addrs != null)
+                else if(phone.isEmpty())
                 {
-                    address.add(addrs);
+                    warningMessage("Debe añadir al menos una número telefónico.");
                 }
-                for(String item: viewDirectory.jtfAdresGetAllItems())
-                {
-                    address.add(item);
-                }
-                ModelContact contact = new ModelContact(name, lastName, id, birthDate, new ArrayList<>(address), new HashMap<>(phone), type);
-                if(updateContact(contact))
-                {
-                    JOptionPane.showMessageDialog(null,"Contacto actualizado exitosamente!","Contacto actualizado",JRootPane.INFORMATION_DIALOG);   
-                    viewDirectory.clearForm();
-                    phone.clear();
-                    address.clear();
-                }
+
                 else
                 {
-                    warningMessage("El contacto no pudo ser actualizado.");
+                    ModelContact contact = new ModelContact(name, lastName, id, birthDate, new ArrayList<>(address), new HashMap<>(phone), type);
+                    if(updateContact(contact))
+                    {
+                        JOptionPane.showMessageDialog(null,"Contacto actualizado exitosamente!","Contacto actualizado",JRootPane.INFORMATION_DIALOG);   
+                        viewDirectory.clearForm();
+                        phone.clear();
+                        address.clear();
+                        viewDirectory.setJtaInfo(getContact(contact));
+                    }
+                    else
+                    {
+                        warningMessage("El contacto no pudo ser actualizado.");
+                    }
                 }
+                
             }
             
             //------------------------------------------------------------------------------------
             
             if(e.getActionCommand().equalsIgnoreCase("BORRAR"))
             {
-                if(!viewDirectory.getTextjtfId().equals(""))
+                if(!viewDirectory.getTextjtfRemoveContact().equals(""))
                 {
-                    if(directory.deleteContact(viewDirectory.getTextjtfId()))
+                    if(directory.deleteContact(viewDirectory.getTextjtfRemoveContact()))
                     {
                         viewDirectory.clearForm();
                         viewDirectory.setJtaInfo(getContacts());
@@ -422,6 +382,36 @@ public class ControllerDirectory
                     warningMessage("Escriba el Id del contacto que sea eliminar en el campo ID.");
                 }
             }
+            
+            //------------------------------------------------------------------------------------
+            
+            if(e.getActionCommand().equalsIgnoreCase("ELIMINAR DIR"))
+            {
+                if (viewDirectory.removeDir()) 
+                {
+                    JOptionPane.showMessageDialog(null, "Direccion removida");
+                } 
+                else 
+                {                   
+                    warningMessage("Escoja la dirección que desea eliminar.");
+                }
+            }
+            
+            //------------------------------------------------------------------------------------
+            
+            if(e.getActionCommand().equalsIgnoreCase("ELIMINAR TEL"))
+            {
+                if (viewDirectory.removeTel()) 
+                {
+                    JOptionPane.showMessageDialog(null, "Telefono removido");
+                } 
+                else 
+                {                   
+                    warningMessage("Escoja el número telefónico que desea eliminar.");
+                }
+            }
+            
+            //------------------------------------------------------------------------------------
         }
         
         //------------------------------------------------------------------------------------

@@ -4,10 +4,16 @@
  */
 package view;
 
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
@@ -20,9 +26,13 @@ public class ViewDirectory extends javax.swing.JFrame {
      * Creates new form ViewDirectory2
      */
     public ViewDirectory() {
-        initComponents();
+        initComponents();  
+        DefaultListModel<String> listModelDirs = new DefaultListModel<>();
+        DefaultListModel<String> listModelNumbers = new DefaultListModel<>();
+        jlDirs.setModel(listModelDirs);
+        jlNumbers.setModel(listModelNumbers);
+        
         jcbSelectType.setSelectedIndex(-1);
-        jcbTelType.setSelectedIndex(-1);
         setSize(850, 800);
     }
     
@@ -47,6 +57,18 @@ public class ViewDirectory extends javax.swing.JFrame {
     public void addBtnjbSearchIdListener(ActionListener listenControllers){
         jbSearchId.addActionListener(listenControllers);}
     
+    public void addBtnjbremoveDirListener(ActionListener listenControllers){
+        jbRemoveDir.addActionListener(listenControllers);}
+    
+    public void addBtnjbremoveTelListener(ActionListener listenControllers){
+        jbRemoveTel.addActionListener(listenControllers);}
+    
+    public String getTextjtfRemoveContact()
+    {
+        String text = jtfRemoveContact.getText();
+        return text;
+    }
+    
     public String getTextjtfName() {
         String text = jtfName.getText();
         return text;
@@ -67,24 +89,14 @@ public class ViewDirectory extends javax.swing.JFrame {
         return text;
     }
     
-    public String getTexjtfAdress() {
-        String text = (String) jtfAdress.getSelectedItem();
-        return text;
-    }
-    
-    public String getTextjtfTelNumber() {
-        String text = (String) jtfTelNumber.getSelectedItem();
-        return text;
-    }
-    
     public String getSelectedjcbSelectType() {
         return (String) jcbSelectType.getSelectedItem();
         
     }
     
-    public String getSelectedjcbTelType() {
-        Object selected = jcbTelType.getSelectedItem();
-        return (String) selected;
+    public void setJtfRemoveContact(String text)
+    {
+        jtfRemoveContact.setText(text);
     }
     
     public void setJtaInfo(String text)
@@ -102,10 +114,6 @@ public class ViewDirectory extends javax.swing.JFrame {
         return jtfTelNumber1.getText();
     }
 
-    public void setJtfAdress(String text) {
-        this.jtfAdress.setSelectedItem(text);
-    }
-
     public void setJtfBirthDate(String text) {
         this.jtfBirthDate.setText(text);
     }
@@ -120,63 +128,163 @@ public class ViewDirectory extends javax.swing.JFrame {
 
     public void setJtfName(String text) {
         this.jtfName.setText(text);
-    }
-
-    public void setJtfTelNumber(String text) {
-        this.jtfTelNumber.setSelectedItem(text);
-    }        
+    }     
 
     public void setJcbSelectType(String selected) {
         this.jcbSelectType.setSelectedItem(selected);
     }
 
-    public void setJcbTelType(String selected) {
-        this.jcbTelType.setSelectedItem(selected);
-    }
-    
-    public void clearAddres()
+    public boolean removeDir()
     {
-        jtfAdress.removeAllItems();
-    }
-    
-    public void jtfAdresAddItem(String text)
-    {
-        jtfAdress.addItem(text);
-        jtfAdress.setSelectedIndex(-1);
-    }
-    
-    public List<String> jtfAdresGetAllItems()
-    {
-        List<String> list = new ArrayList<String>();
-        
-        for(int i = 0; i < jtfAdress.getItemCount(); i++)
+        DefaultListModel<String> model = (DefaultListModel<String>) jlDirs.getModel();
+
+        int selectedIndex = jlDirs.getSelectedIndex();
+
+        if (selectedIndex != -1) 
         {
-            list.add(jtfAdress.getItemAt(i));
+            model.remove(selectedIndex);
+            return true;
+        } 
+        return false;
+    }
+            
+    public boolean removeTel()
+    {
+        DefaultListModel<String> model = (DefaultListModel<String>) jlNumbers.getModel();
+
+        int selectedIndex = jlNumbers.getSelectedIndex();
+
+        if (selectedIndex != -1) 
+        {
+            model.remove(selectedIndex);
+            return true;
+        } 
+        return false;
+    }
+    
+    public List<String> getDirs() 
+    {
+        // Obtén el modelo de datos del JList
+        DefaultListModel<String> model = (DefaultListModel<String>) jlDirs.getModel();
+
+        // Obtén los elementos del modelo y guárdalos en una lista
+        List<String> elements = new ArrayList<>();
+        int size = model.getSize();
+        for (int i = 0; i < size; i++) {
+            String elemento = model.getElementAt(i);
+            elements.add(elemento);
         }
-        return list;
+
+        return elements;
     }
     
-    public void jtfPhoneAddItem(String text)
+    public HashMap<String,String> getNumbers() 
     {
-        jtfTelNumber.addItem(text);
-        jtfTelNumber.setSelectedIndex(-1);
+        // Obtén el modelo de datos del JList
+        DefaultListModel<String> model = (DefaultListModel<String>) jlNumbers.getModel();
+
+        // Obtén los elementos del modelo y guárdalos en una lista
+        HashMap<String,String> elements = new HashMap<>();
+        int size = model.getSize();
+       
+        for (int i = 0; i < size; i++) 
+        {
+            String element = model.getElementAt(i);
+            String[] parts = element.split(":");
+            elements.put(parts[1],parts[0]);
+        }
+
+        return elements;
     }
     
-    public void clearPhone()
+    public boolean isEmptyDirs()
     {
-        jtfTelNumber.removeAllItems();
-        jcbTelType.setSelectedIndex(-1);
+        DefaultListModel<String> model = (DefaultListModel<String>) jlDirs.getModel();
+
+        return model.isEmpty();
     }
     
+    public boolean isEmptyNumbers()
+    {
+        DefaultListModel<String> model = (DefaultListModel<String>) jlNumbers.getModel();
+
+        return model.isEmpty();
+    }
+    
+    public void clearDirList()
+    {
+        DefaultListModel<String> listModelDirs = new DefaultListModel<>();
+        jlDirs.setModel(listModelDirs);
+    }
+    
+    public void clearNumbersList()
+    {
+        DefaultListModel<String> listModelNumbers = new DefaultListModel<>();
+        jlNumbers.setModel(listModelNumbers);
+    }
     public void clearForm()
     {
-        clearAddres();
-        clearPhone();
         jcbSelectType.setSelectedIndex(-1);
         jtfName.setText("");
         jtfLastName.setText("");
         jtfId.setText("");
         jtfBirthDate.setText("");
+        jtfRemoveContact.setText("");
+        clearDirList();
+        clearNumbersList();
+    }
+    
+    public void addPhone(String phone)
+    {
+        DefaultListModel<String> model = (DefaultListModel<String>) jlNumbers.getModel();
+        model.addElement(phone); 
+    }
+    
+    public void addPhoneButton() 
+    {
+        // Crear un panel personalizado con un JTextField y un JComboBox
+        JPanel panel = new JPanel(new GridLayout(2, 2));
+        JTextField textField = new JTextField();
+        JComboBox<String> comboBox = new JComboBox<>(new String[]{"MOBIL", "CASA", "OFICINA", "OTRO"});
+        panel.add(new JLabel("Número Telefónico:"));
+        panel.add(textField);
+        panel.add(new JLabel("Tipo:"));
+        panel.add(comboBox);
+
+        int result = JOptionPane.showConfirmDialog(null, panel, "Añadir teléfono", JOptionPane.OK_CANCEL_OPTION);
+
+        // Manejar la respuesta del usuario
+        if (result == JOptionPane.OK_OPTION) {
+            String inputText = textField.getText();
+            String selectedOption = comboBox.getSelectedItem().toString();
+            JOptionPane.showMessageDialog(null, "Número ingresado: " + inputText + "\nTipo: " + selectedOption);
+            addPhone(selectedOption+": "+inputText);
+        }
+    }
+    
+    public void addDir(String dir)
+    {
+        DefaultListModel<String> model = (DefaultListModel<String>) jlDirs.getModel();
+        model.addElement(dir); 
+    }
+    
+    public void addDirButton() 
+    {
+        // Crear un panel personalizado con un JTextField y un JComboBox
+        JPanel panel = new JPanel(new GridLayout(2, 2));
+        JTextField textField = new JTextField();        
+        panel.add(new JLabel("Dirección:"));
+        panel.add(textField);
+
+        int result = JOptionPane.showConfirmDialog(null, panel, "Añadir dirección", JOptionPane.OK_CANCEL_OPTION);
+        
+        // Manejar la respuesta del usuario
+        if (result == JOptionPane.OK_OPTION) 
+        {
+            String inputText = textField.getText();
+            JOptionPane.showMessageDialog(null, "Dirección ingresado: " + inputText);
+            addDir(inputText);
+        }
     }
     
     
@@ -190,7 +298,6 @@ public class ViewDirectory extends javax.swing.JFrame {
     private void initComponents() {
 
         jlHeader1 = new javax.swing.JLabel();
-        jlErrorPanel1 = new javax.swing.JLabel();
         jlType1 = new javax.swing.JLabel();
         jlNames1 = new javax.swing.JLabel();
         jlLastName1 = new javax.swing.JLabel();
@@ -211,14 +318,18 @@ public class ViewDirectory extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
-        jlType8 = new javax.swing.JLabel();
-        jcbTelType = new javax.swing.JComboBox<>();
         jbAddAddress = new javax.swing.JButton();
         jbAddTelNumber = new javax.swing.JButton();
         jbSearchId = new javax.swing.JButton();
         jlId2 = new javax.swing.JLabel();
-        jtfAdress = new javax.swing.JComboBox<>();
-        jtfTelNumber = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jlNumbers = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jlDirs = new javax.swing.JList<>();
+        jbRemoveDir = new javax.swing.JButton();
+        jbRemoveTel = new javax.swing.JButton();
+        jlId3 = new javax.swing.JLabel();
+        jtfRemoveContact = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 650));
@@ -231,163 +342,151 @@ public class ViewDirectory extends javax.swing.JFrame {
         getContentPane().add(jlHeader1);
         jlHeader1.setBounds(280, 10, 317, 88);
 
-        jlErrorPanel1.setText("error panel ");
-        getContentPane().add(jlErrorPanel1);
-        jlErrorPanel1.setBounds(40, 110, 581, 16);
-
         jlType1.setText("TIPO:");
         getContentPane().add(jlType1);
-        jlType1.setBounds(40, 140, 130, 16);
+        jlType1.setBounds(40, 110, 130, 16);
 
         jlNames1.setText("NOMBRES:");
         getContentPane().add(jlNames1);
-        jlNames1.setBounds(40, 170, 110, 16);
+        jlNames1.setBounds(40, 140, 110, 16);
 
         jlLastName1.setText("APELLIDOS:");
         getContentPane().add(jlLastName1);
-        jlLastName1.setBounds(40, 200, 120, 16);
+        jlLastName1.setBounds(40, 170, 120, 16);
 
         jlId1.setText("ID QUE DESEA BUSCAR:");
         getContentPane().add(jlId1);
-        jlId1.setBounds(600, 620, 170, 16);
+        jlId1.setBounds(600, 650, 170, 16);
 
         jlBirthDate1.setText("FECHA DE NACIMIENTO:");
         getContentPane().add(jlBirthDate1);
-        jlBirthDate1.setBounds(40, 260, 180, 16);
+        jlBirthDate1.setBounds(40, 230, 180, 16);
 
         jlAdress1.setText("DIRECCION(ES):");
         getContentPane().add(jlAdress1);
-        jlAdress1.setBounds(40, 290, 110, 16);
+        jlAdress1.setBounds(40, 280, 110, 16);
 
         jlTelNumber1.setText("TELEFONO(S):");
         getContentPane().add(jlTelNumber1);
-        jlTelNumber1.setBounds(40, 320, 100, 16);
+        jlTelNumber1.setBounds(40, 370, 100, 16);
 
         jcbSelectType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PROFESOR", "ESTUDIANTE", "EMPLEADO" }));
         getContentPane().add(jcbSelectType);
-        jcbSelectType.setBounds(280, 140, 107, 26);
+        jcbSelectType.setBounds(280, 110, 104, 26);
 
         jbAdd.setText("GUARDAR");
         getContentPane().add(jbAdd);
-        jbAdd.setBounds(420, 670, 120, 27);
+        jbAdd.setBounds(420, 700, 120, 27);
 
         jbUpdate.setText("ACTUALIZAR");
         getContentPane().add(jbUpdate);
-        jbUpdate.setBounds(290, 670, 120, 27);
+        jbUpdate.setBounds(290, 700, 120, 27);
 
         jbDelete.setText("BORRAR");
         getContentPane().add(jbDelete);
-        jbDelete.setBounds(30, 670, 120, 27);
+        jbDelete.setBounds(30, 700, 120, 27);
 
         jbList.setText("LISTAR");
         getContentPane().add(jbList);
-        jbList.setBounds(160, 670, 120, 27);
+        jbList.setBounds(160, 700, 120, 27);
         getContentPane().add(jtfName);
-        jtfName.setBounds(280, 170, 340, 26);
+        jtfName.setBounds(280, 140, 340, 26);
         getContentPane().add(jtfLastName);
-        jtfLastName.setBounds(280, 200, 340, 26);
+        jtfLastName.setBounds(280, 170, 340, 26);
         getContentPane().add(jtfId);
-        jtfId.setBounds(280, 230, 167, 26);
-
-        jtfBirthDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfBirthDateActionPerformed(evt);
-            }
-        });
+        jtfId.setBounds(280, 200, 167, 26);
         getContentPane().add(jtfBirthDate);
-        jtfBirthDate.setBounds(280, 260, 167, 26);
+        jtfBirthDate.setBounds(280, 230, 167, 26);
         getContentPane().add(jtfTelNumber1);
-        jtfTelNumber1.setBounds(590, 640, 167, 26);
+        jtfTelNumber1.setBounds(590, 670, 167, 26);
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(20, 360, 760, 245);
+        jScrollPane2.setBounds(20, 430, 760, 210);
 
         jLabel2.setText("(MM/DD/AAAA)");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(510, 260, 88, 16);
-
-        jlType8.setText("TIPO:");
-        getContentPane().add(jlType8);
-        jlType8.setBounds(460, 320, 40, 16);
-
-        jcbTelType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MOVIL", "CASA", "OFICINA", "OTRO" }));
-        getContentPane().add(jcbTelType);
-        jcbTelType.setBounds(510, 320, 90, 26);
+        jLabel2.setBounds(510, 230, 88, 16);
 
         jbAddAddress.setText("AÑADIR DIR");
         getContentPane().add(jbAddAddress);
-        jbAddAddress.setBounds(610, 290, 120, 27);
+        jbAddAddress.setBounds(610, 260, 120, 27);
 
         jbAddTelNumber.setText("AÑADIR TEL");
         getContentPane().add(jbAddTelNumber);
-        jbAddTelNumber.setBounds(610, 320, 120, 27);
+        jbAddTelNumber.setBounds(610, 350, 120, 27);
 
         jbSearchId.setText("BUSCAR POR ID");
-        jbSearchId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSearchIdActionPerformed(evt);
-            }
-        });
         getContentPane().add(jbSearchId);
-        jbSearchId.setBounds(570, 670, 200, 27);
+        jbSearchId.setBounds(570, 700, 200, 27);
 
         jlId2.setText("ID:");
         getContentPane().add(jlId2);
-        jlId2.setBounds(40, 230, 130, 16);
+        jlId2.setBounds(40, 200, 130, 16);
 
-        jtfAdress.setEditable(true);
-        getContentPane().add(jtfAdress);
-        jtfAdress.setBounds(280, 290, 170, 26);
+        jScrollPane1.setViewportView(jlNumbers);
 
-        jtfTelNumber.setEditable(true);
-        getContentPane().add(jtfTelNumber);
-        jtfTelNumber.setBounds(280, 320, 170, 26);
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(280, 350, 300, 60);
+
+        jScrollPane3.setViewportView(jlDirs);
+
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(280, 260, 300, 60);
+
+        jbRemoveDir.setText("ELIMINAR DIR");
+        getContentPane().add(jbRemoveDir);
+        jbRemoveDir.setBounds(610, 290, 120, 27);
+
+        jbRemoveTel.setText("ELIMINAR TEL");
+        getContentPane().add(jbRemoveTel);
+        jbRemoveTel.setBounds(610, 380, 120, 27);
+
+        jlId3.setText("ID DEL CONTACTO QUE DESEA ELIMINAR:");
+        getContentPane().add(jlId3);
+        jlId3.setBounds(30, 650, 260, 16);
+        getContentPane().add(jtfRemoveContact);
+        jtfRemoveContact.setBounds(40, 670, 100, 26);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbSearchIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbSearchIdActionPerformed
-
-    private void jtfBirthDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfBirthDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfBirthDateActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JButton jbAdd;
     private javax.swing.JButton jbAddAddress;
     private javax.swing.JButton jbAddTelNumber;
     private javax.swing.JButton jbDelete;
     private javax.swing.JButton jbList;
+    private javax.swing.JButton jbRemoveDir;
+    private javax.swing.JButton jbRemoveTel;
     private javax.swing.JButton jbSearchId;
     private javax.swing.JButton jbUpdate;
     private javax.swing.JComboBox<String> jcbSelectType;
-    private javax.swing.JComboBox<String> jcbTelType;
     private javax.swing.JLabel jlAdress1;
     private javax.swing.JLabel jlBirthDate1;
-    private javax.swing.JLabel jlErrorPanel1;
+    private javax.swing.JList<String> jlDirs;
     private javax.swing.JLabel jlHeader1;
     private javax.swing.JLabel jlId1;
     private javax.swing.JLabel jlId2;
+    private javax.swing.JLabel jlId3;
     private javax.swing.JLabel jlLastName1;
     private javax.swing.JLabel jlNames1;
+    private javax.swing.JList<String> jlNumbers;
     private javax.swing.JLabel jlTelNumber1;
     private javax.swing.JLabel jlType1;
-    private javax.swing.JLabel jlType8;
-    private javax.swing.JComboBox<String> jtfAdress;
     private javax.swing.JTextField jtfBirthDate;
     private javax.swing.JTextField jtfId;
     private javax.swing.JTextField jtfLastName;
     private javax.swing.JTextField jtfName;
-    private javax.swing.JComboBox<String> jtfTelNumber;
+    private javax.swing.JTextField jtfRemoveContact;
     private javax.swing.JTextField jtfTelNumber1;
     // End of variables declaration//GEN-END:variables
 }
