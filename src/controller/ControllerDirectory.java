@@ -76,7 +76,7 @@ public class ControllerDirectory
             
             for (Map.Entry<String, String> entry : phones.entrySet()) 
             {
-                message.append(entry.getKey()).append(": ").append(entry.getValue()).append(", ");
+                message.append(entry.getValue()).append(": ").append(entry.getKey()).append(", ");
             }
             
             message.delete(message.length() - 2, message.length()).append("\n");
@@ -115,7 +115,7 @@ public class ControllerDirectory
 
         for (Map.Entry<String, String> entry : phones.entrySet()) 
         {
-            message.append(entry.getKey()).append(": ").append(entry.getValue()).append(", ");
+            message.append(entry.getValue()).append(": ").append(entry.getKey()).append(", ");
         }
 
         message.delete(message.length() - 2, message.length()).append("\n");
@@ -136,62 +136,62 @@ public class ControllerDirectory
     {
         // Contacto 1
         HashMap<String, String> phones1 = new HashMap<>();
-        phones1.put("MOBIL", "(+57) 3199900201");
+        phones1.put("(+57) 3199900201","MOBIL");
         ModelContact contact1 = new ModelContact("Jairo", "Vélez", "123", "05-08-1983", List.of("Calle 2 #3-2", "Apartamento 5A"), phones1, "EMPLEADO");
         directory.addContact(contact1);
 
         // Contacto 2
         HashMap<String, String> phones2 = new HashMap<>();
-        phones2.put("CASA", "(+57) 3111122334");
+        phones2.put("(+57) 3111122334","CASA");
         ModelContact contact2 = new ModelContact("Ana", "Gómez", "456", "10-12-1990", List.of("Avenida 1 #456", "Condominio Bellavista"), phones2, "ESTUDIANTE");
         directory.addContact(contact2);
 
         // Contacto 3
         HashMap<String, String> phones3 = new HashMap<>();
-        phones3.put("OFICINA", "(+57) 3222233445");
+        phones3.put( "(+57) 3222233445","OFICINA");
         ModelContact contact3 = new ModelContact("Carlos", "López", "789", "15-03-1985", List.of("Carrera 5 #678", "Edificio Central, Piso 10"), phones3, "PROFESOR");
         directory.addContact(contact3);
 
         // Contacto 4
         HashMap<String, String> phones4 = new HashMap<>();
-        phones4.put("OTRO", "(+57) 3333344444");
+        phones4.put( "(+57) 3333344444","OTRO");
         ModelContact contact4 = new ModelContact("Elena", "Rodríguez", "987", "20-07-1995", List.of("Avenida 3 #789", "Residencial Los Pinos, Bloque B"), phones4, "ESTUDIANTE");
         directory.addContact(contact4);
 
         // Contacto 5
         HashMap<String, String> phones5 = new HashMap<>();
-        phones5.put("MOBIL", "(+57) 3444455555");
+        phones5.put( "(+57) 3444455555","MOBIL");
         ModelContact contact5 = new ModelContact("Felipe", "Hernández", "654", "12-06-1988", List.of("Calle 4 #567", "Torre Norte, Departamento 12"), phones5, "EMPLEADO");
         directory.addContact(contact5);
 
         // Contacto 6
         HashMap<String, String> phones6 = new HashMap<>();
-        phones6.put("CASA", "(+57) 3555566666");
+        phones6.put( "(+57) 3555566666","CASA");
         ModelContact contact6 = new ModelContact("Gabriela", "Gutiérrez", "321", "30-09-1992", List.of("Carrera 7 #890", "Residencial Los Olivos, Casa 15"), phones6, "ESTUDIANTE");
         directory.addContact(contact6);
 
         // Contacto 7
         HashMap<String, String> phones7 = new HashMap<>();
-        phones7.put("OFICINA", "(+57) 3666677777");
+        phones7.put( "(+57) 3666677777","OFICINA");
         ModelContact contact7 = new ModelContact("Héctor", "Sánchez", "9872", "05-04-1980", List.of("Avenida 2 #345", "Edificio Empresarial, Piso 5"), phones7, "PROFESOR");
         directory.addContact(contact7);
 
         // Contacto 8
         HashMap<String, String> phones8 = new HashMap<>();
-        phones8.put("OTRO", "(+57) 3777788888");
+        phones8.put( "(+57) 3777788888","OTRO");
         ModelContact contact8 = new ModelContact("Isabel", "Pérez", "876", "18-11-1997", List.of("Calle 8 #456", "Residencial Las Flores, Casa 20"), phones8, "ESTUDIANTE");
         directory.addContact(contact8);
 
         // Contacto 9
         HashMap<String, String> phones9 = new HashMap<>();
-        phones9.put("MOBIL", "(+57) 3888899999");
+        phones9.put( "(+57) 3888899999","MOBIL");
         ModelContact contact9 = new ModelContact("Javier", "Martínez", "234", "22-03-1982", List.of("Carrera 9 #678", "Condominio Primavera, Torre 3"), phones9, "EMPLEADO");
         directory.addContact(contact9);
 
         // Contacto 10
         HashMap<String, String> phones10 = new HashMap<>();
-        phones10.put("CASA", "(+57) 3999900000");
-        phones10.put("OFICINA", "(+57) 3999911111");
+        phones10.put( "(+57) 3999900000","CASA");
+        phones10.put( "(+57) 3999911111","OFICINA");
         ModelContact contact10 = new ModelContact("Karla", "Gómez", "567", "08-09-1993", List.of("Avenida 6 #789", "Residencial Los Robles, Casa 30"), phones10, "ESTUDIANTE");
         directory.addContact(contact10);
     }
@@ -216,15 +216,16 @@ public class ControllerDirectory
                     warningMessage("Por favor escoja el tipo de teléfono");
                 }
                 
-                else if(number.strip().equals(""))
+                else if(number == null)
                 {
                     warningMessage("Escriba el número telefónico");
                 }
                 
                 else
                 {
-                    phone.put(type, number);
-                    viewDirectory.clearPhone();
+                    phone.put(number, type);
+//                    viewDirectory.clearPhone();
+                    viewDirectory.jtfPhoneAddItem(number+" ("+type+")");
                     System.out.println("Phones:"+phone);
                 }
                 
@@ -236,7 +237,7 @@ public class ControllerDirectory
             {
                 String dir = viewDirectory.getTexjtfAdress();
                 
-                if(dir.strip().equals(""))
+                if(dir == null)
                 {
                     warningMessage("Por favor escriba la dirección");
                 }
@@ -245,7 +246,7 @@ public class ControllerDirectory
                 {
                     address.add(dir);
                     viewDirectory.jtfAdresAddItem(dir);
-                    viewDirectory.clearAddres();
+//                    viewDirectory.clearAddres();                  
                 }
 
             }
@@ -268,15 +269,11 @@ public class ControllerDirectory
                 else if(address.size() < 1 && viewDirectory.getTexjtfAdress() == null)
                 {
                     warningMessage("Por favor agregue al menos una dirección.");
-                    System.out.println(address.size());
-                    System.out.println("Dirs 2:"+address);
                 }
                 
                 else if(phone.size() < 1 && (viewDirectory.getTextjtfTelNumber() == null || viewDirectory.getSelectedjcbTelType() == null))
                 {
                     warningMessage("Por favor agregue al menos un número telefónico.");
-                    System.out.println(address.size());
-                    System.out.println("Phones:"+phone);
                 }
                 
                 else
@@ -286,7 +283,7 @@ public class ControllerDirectory
                     String addrs = viewDirectory.getTexjtfAdress();
                     if( telNumber != null && telType != null)
                     {
-                        phone.put(telType, telNumber);
+                        phone.put(telNumber,telType);
                     }
                     if(addrs != null)
                     {
@@ -346,7 +343,7 @@ public class ControllerDirectory
                         
                         for (Map.Entry<String, String> entry : contact.getPhone().entrySet()) 
                         {
-                            viewDirectory.jtfPhoneAddItem(entry.getValue());
+                            viewDirectory.jtfPhoneAddItem(entry.getKey()+" ("+entry.getValue()+")");
                         }
                     }
                     catch(Exception error)
@@ -378,7 +375,7 @@ public class ControllerDirectory
                 
                 if(telNumber != null && telType != null)
                 {
-                    phone.put(telType, telNumber);
+                    phone.put(telNumber,telType);
                 }
                 
                 if(addrs != null)
@@ -400,6 +397,29 @@ public class ControllerDirectory
                 else
                 {
                     warningMessage("El contacto no pudo ser actualizado.");
+                }
+            }
+            
+            //------------------------------------------------------------------------------------
+            
+            if(e.getActionCommand().equalsIgnoreCase("BORRAR"))
+            {
+                if(!viewDirectory.getTextjtfId().equals(""))
+                {
+                    if(directory.deleteContact(viewDirectory.getTextjtfId()))
+                    {
+                        viewDirectory.clearForm();
+                        viewDirectory.setJtaInfo(getContacts());
+                        JOptionPane.showMessageDialog(null,"Contacto eliminado exitosamente!","Contacto Eliminado",JRootPane.INFORMATION_DIALOG);   
+                    }
+                    else
+                    {
+                        warningMessage("Contacto no encontrado.");
+                    }
+                }
+                else
+                {
+                    warningMessage("Escriba el Id del contacto que sea eliminar en el campo ID.");
                 }
             }
         }

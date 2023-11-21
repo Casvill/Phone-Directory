@@ -73,10 +73,18 @@ public class ContactDaoImplementation implements IContactDao
     }
 
     @Override
-    public boolean deleteContact(ModelContact contact) 
+    public boolean deleteContact(String contactId) 
     {
-        contacts.remove(contact);
-        return true;
+        for(ModelContact contactB: contacts)
+        {
+            if(contactB.getId().strip().equals(contactId.strip()))
+            {
+                int pos = contacts.indexOf(contactB);
+                contacts.remove(pos);
+                return true;
+            }
+        }
+        return false;
     }
     
 }

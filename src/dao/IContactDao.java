@@ -13,5 +13,5 @@ public interface IContactDao
     public ModelContact getContact(String contactID);
     public boolean addContact(ModelContact contact);
     public boolean updateContact(ModelContact contact);
-    public boolean deleteContact(ModelContact contact);
+    public boolean deleteContact(String contactId);
 }

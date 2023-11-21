@@ -37,8 +37,8 @@ public class ModelDirectory
         return this.contactDao.updateContact(contact);
     }
     
-    public boolean deleteContact(ModelContact contact)
+    public boolean deleteContact(String contactId)
     {
-        return this.contactDao.deleteContact(contact);
+        return this.contactDao.deleteContact(contactId);
     }
 }
