@@ -1,5 +1,15 @@
 package controller;
 
+/**
+ * Estudiantes: 
+ * Daniel Castillo Villamarín - 1727303
+ * Andres Valencia - 1960722
+ * Profesor: Luis Johany Romo Portilla
+ * Fundamentos de programacion orientada a eventos
+ * @FPOE group 81
+ * @Lab number 3
+ */
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -11,8 +21,7 @@ import javax.swing.JRootPane;
 import model.ModelContact;
 import model.ModelDirectory;
 import view.ViewDirectory;
-//                            FAAAALTAAAAAA ARREGLAR EL ACTUALIZAR CONTACTO Y MODIFICAR
-//                    LAS FUNCIONES DE MODIFICAR Y DE BORRAR CONTACTO EN CONTACTODAOIMPLEMENTEISHON
+
 /**
  *
  * @author Daniel Casvill

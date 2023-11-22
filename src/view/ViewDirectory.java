@@ -1,9 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
-
+/**
+ * Estudiantes: 
+ * Daniel Castillo Villamarín - 1727303
+ * Andres Valencia - 1960722
+ * Profesor: Luis Johany Romo Portilla
+ * Fundamentos de programacion orientada a eventos
+ * @FPOE group 81
+ * @Lab number 3
+ */
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
