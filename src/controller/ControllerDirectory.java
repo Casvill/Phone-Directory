@@ -240,7 +240,7 @@ public class ControllerDirectory
                 String birthDate = viewDirectory.getTexjtfBirthDate();
                 String type = viewDirectory.getSelectedjcbSelectType(); 
                 
-                if(name.strip().equals("") || lastName.strip().equals("") || id.strip().equals("") || birthDate.strip().equals("") || type.strip().equals(""))
+                if(name == null || lastName == null || id == null|| birthDate == null || type == null)
                 {
                     warningMessage("Por favor llene todos los campos.");
                 }
